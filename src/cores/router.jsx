@@ -1,7 +1,6 @@
-import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import Sample from '../pages/Sample';
+import Sample from 'pages/Sample';
 
 function Router() {
   return (
