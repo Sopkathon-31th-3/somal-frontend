@@ -32,6 +32,8 @@ function Step4() {
           {foodImgList.map((foodImg, index) => (
             <OptionBackground>
               <FoodImg src={foodImg} key={index} />
+              <p>뿌링클</p>
+              <span>20000원</span>
             </OptionBackground>
           ))}
         </OptionArea>
@@ -61,6 +63,16 @@ const Step4Background = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
+
+  p {
+    margin: 10.2rem 0 0.4rem 0;
+    font-size: 1.4rem;
+  }
+
+  span {
+    font-size: 1.2rem;
+  }
 `;
 
 const OptionArea = styled.div`
