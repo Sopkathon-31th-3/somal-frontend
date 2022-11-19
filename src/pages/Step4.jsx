@@ -160,23 +160,23 @@ const StepItem = styled.div`
 
 const PrevButtonContainer = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
 
   & > p {
     font-size: 1.8rem;
     margin-left: 1.7rem;
+    margin-bottom: 9.5rem;
   }
 `;
 
 const NextButtonContainer = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
 
   & > p {
     font-size: 1.8rem;
     margin-right: 1.7rem;
+    margin-bottom: 9.5rem;
   }
 `;
 
