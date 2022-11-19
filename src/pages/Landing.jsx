@@ -13,7 +13,7 @@ function Landing() {
         <StStart>
           <img src={santa} alt='santa' />
 
-          <Link to={'/ending'}>
+          <Link to={'/step1'}>
             <button type='button'>시작하기</button>
           </Link>
         </StStart>
