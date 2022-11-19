@@ -1,8 +1,7 @@
-import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import prevIcon from '../../assets/icon/prevIcon.png';
 import nextIcon from '../../assets/icon/nextIcon.png';
+import prevIcon from '../../assets/icon/prevIcon.png';
 
 function StepButton() {
   const location = useLocation();
