@@ -1,14 +1,14 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
-import Sample from 'pages/Sample';
+import Landing from 'pages/Landing';
+import Ending from 'pages/Ending';
 
 function Router() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/sample' element={<Sample />} />
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path='/' element={<Landing />} />
+      <Route path='/ending' element={<Ending />} />
+    </Routes>
   );
 }
 
