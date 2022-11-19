@@ -7,15 +7,16 @@ const GlobalStyle = createGlobalStyle`
   #root {
     display: flex;
     flex-direction: column;
-    max-width: 37.5rem;
+    max-width: 39rem;
     min-height: 100vh;
     margin: 0 auto;
     position: relative;
+    background-color: #EE5959;
   }
 
   html,
   body {
-    font-size: 10px; 
+    font-size: 62.5%; 
     font-family: Galmuri14, sans-serif;
   }
 
