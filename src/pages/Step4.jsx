@@ -1,15 +1,15 @@
 import bigBalloon from 'assets/image/big_balloon.svg';
-import boonguhppang from 'assets/image/boonguhppang.png';
-import burger from 'assets/image/burger.png';
-import chicken from 'assets/image/chicken.png';
-import coffee from 'assets/image/coffee.png';
-import gimbap from 'assets/image/gimbap.png';
-import gookbap from 'assets/image/gookbap.png';
-import hotdog from 'assets/image/hotdog.png';
+import boonguhppang from 'assets/image/boonguhppang.svg';
+import burger from 'assets/image/burger.svg';
+import chicken from 'assets/image/chicken.svg';
+import coffee from 'assets/image/coffee.svg';
+import gimbap from 'assets/image/gimbap.svg';
+import gookbap from 'assets/image/gookbap.svg';
+import hotdog from 'assets/image/hotdog.svg';
 import optionBalloon from 'assets/image/option_balloon.png';
-import pizza from 'assets/image/pizza.png';
-import ramen from 'assets/image/ramen.png';
-import ttheokbokki from 'assets/image/ttheokbokki.png';
+import pizza from 'assets/image/pizza.svg';
+import ramen from 'assets/image/ramen.svg';
+import ttheokbokki from 'assets/image/tteokbokki.svg';
 import styled from 'styled-components';
 
 function Step4() {
