@@ -4,6 +4,7 @@ import container from '../assets/image/container.png';
 import StepButton from 'components/common/StepButton';
 import StepView from 'components/common/StepView';
 import { wishPrice } from '../atoms/atom';
+import logo from '../assets/image/logo.svg';
 import { useRecoilState } from 'recoil';
 
 function Step2() {
@@ -19,7 +20,7 @@ function Step2() {
     <StyledRoot>
       <Container>
         <Main>
-          <Title>소원을 말해보세영</Title>
+          <Logo src={logo} />
           <Question>
             근데 그거...
             <br /> 얼마짜리더라?
@@ -104,4 +105,10 @@ const InputBox = styled.input`
   font-family: Galmuri11;
   /* text-align: center; */
   padding-left: 2rem;
+`;
+
+const Logo = styled.img`
+  width: 20.4rem;
+  height: 2rem;
+  margin: 5.6rem 0 5.9rem 0;
 `;

@@ -4,6 +4,7 @@ import container from '../assets/image/container.png';
 import StepButton from 'components/common/StepButton';
 import StepView from 'components/common/StepView';
 import { useRecoilState } from 'recoil';
+import logo from '../assets/image/logo.svg';
 import { wishDate } from 'atoms/atom';
 
 function Step3() {
@@ -36,7 +37,7 @@ function Step3() {
     <StyledRoot>
       <Container>
         <Main>
-          <Title>소원을 말해보세영</Title>
+          <Logo src={logo} />
           <Question>
             그거...
             <br /> 언제쯤 받고 싶어?
@@ -104,4 +105,10 @@ const InputBox = styled.input`
   font-family: Galmuri11;
   text-align: center;
   padding-bottom: 1rem;
+`;
+
+const Logo = styled.img`
+  width: 20.4rem;
+  height: 2rem;
+  margin: 5.6rem 0 5.9rem 0;
 `;
