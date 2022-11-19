@@ -1,4 +1,4 @@
-# 🎁 소₩을 말(만)해봐 수정~
+# 🎁 소₩을 말(만)해봐
 
 ## 🎅🏻 서비스 소개
 ### 🔔 서비스명 : 소원을 말(만)해봐
@@ -62,14 +62,6 @@
     
     api 함수 모아놓는곳
     
-    (**src > hooks)**
-    
-    custom hooks 정의하는 경우 이곳에서 정의 후 사용
-    
-    (**src > constants)**
-    
-    상수 정의하여 사용하는 경우 이곳에서 정의 후 사용
-    
 
 .keep
 </details> 
@@ -108,17 +100,17 @@
 - **🌸 prettier 설정**
     
     ```jsx
-    module.exports = {
-      printWidth: 100,
-      tabWidth: 2,
-      singleQuote: true,
-      trailingComma: 'all',
-      bracketSpacing: true,
-      semi: true,
-      useTabs: false,
-      arrowParens: 'avoid',
-      endOfLine: 'lf',
-    };
+    {
+      "semi": true,
+      "tabWidth": 2,
+      "printWidth": 100,
+      "singleQuote": true,
+      "trailingComma": "all",
+      "jsxSingleQuote": true,
+      "bracketSpacing": true,
+      "useTabs": false
+    }
+
     ```
     
 - **👻 패키지 매니저 설정**
@@ -154,7 +146,7 @@
 ## 🌟 브랜치 전략
 
     develop > 각자의 브랜치
-    ex ) develop ← feature/Park-1, feature/Choi-1, feature/Na-1, feature/Kim-2
+    ex ) develop ← feature/Park, feature/Choi, feature/Na, feature/Kim
     각자의 브랜치에서 pull request 하고 코드 리뷰 후 develop에 merge
     main에 merge 후 배포
 
