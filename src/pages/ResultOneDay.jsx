@@ -7,7 +7,7 @@ import ResultSanta from '../assets/image/ResultSanta.svg';
 import NextIcon from '../assets/icon/NextIcon.svg';
 import { Link } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import { wishDate, wishPrice, wishItem } from 'atoms/atom';
+import { wishDate, wishPrice, wishItem, likeFood } from 'atoms/atom';
 //dayjs format
 import dayjs from 'dayjs';
 
@@ -15,13 +15,14 @@ export default function Result() {
   const [_wishDate, setWishDate] = useRecoilState(wishDate);
   const [_wishItem, setWishItem] = useRecoilState(wishItem);
   const [_wishPrice, setWishPrice] = useRecoilState(wishPrice);
+  const [_likeFood, setLikeFood] = useRecoilState(likeFood);
 
   const product = _wishItem;
   const year = dayjs(_wishDate).year();
-  const month = dayjs(_wishDate).month();
+  const month = dayjs(_wishDate).month() + 1;
   const date = dayjs(_wishDate).date();
   const day = 1;
-  const foodName = '뿌링클';
+  const foodName = _likeFood;
   const foodNum = 1;
 
   const food1 = '붕어빵';
@@ -68,9 +69,10 @@ export default function Result() {
               </Text>
               {/*recoil*/}
               <Text>
+                하루에
                 <Bolded>
-                  하루에 {foodNum}
-                  마리
+                  {' '}
+                  {foodName} {foodNum}개
                 </Bolded>
                 <Bolded> </Bolded>포기하면 돼 ㅋ
               </Text>
@@ -107,7 +109,7 @@ export default function Result() {
           </SantaWrapper>
           <BelowButton>
             <CopyToClipboard
-              text={window.location.href}
+              text={window.location.host}
               onCopy={() => alert('링크가 클립보드에 복사되었어요!')}
             >
               <button>
