@@ -3,14 +3,19 @@ import styled from 'styled-components';
 import container from '../assets/image/container.png';
 import StepButton from 'components/common/StepButton';
 import StepView from 'components/common/StepView';
+import { useRecoilState } from 'recoil';
+import { wishDate } from 'atoms/atom';
 
 function Step3() {
+  const [_wishDate, setWishDate] = useRecoilState(wishDate);
   const test = (e) => {
     // if (today > e.target.value) {
     //   alert('잘못된 날짜예여');
     //   console.log('냐냐');
     // } else {
+    setWishDate(e.target.value);
     console.log(e.target.value);
+
     // }
   };
 
