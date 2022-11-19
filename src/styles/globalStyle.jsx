@@ -11,13 +11,13 @@ const GlobalStyle = createGlobalStyle`
     min-height: 100vh;
     margin: 0 auto;
     position: relative;
-    background-color: #EE5959;
   }
 
   html,
   body {
-    font-size: 62.5%; 
+    font-size: 62.5%;
     font-family: Galmuri14, sans-serif;
+    background-color: #EE5959;
   }
 
   * {
