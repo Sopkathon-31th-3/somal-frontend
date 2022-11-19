@@ -5,6 +5,28 @@ import StepButton from 'components/common/StepButton';
 import StepView from 'components/common/StepView';
 
 function Step3() {
+  const test = (e) => {
+    // if (today > e.target.value) {
+    //   alert('잘못된 날짜예여');
+    //   console.log('냐냐');
+    // } else {
+    console.log(e.target.value);
+    // }
+  };
+
+  const getYmd10 = () => {
+    //yyyy-mm-dd 포맷 날짜 생성
+    let d = new Date();
+    return (
+      d.getFullYear() +
+      '-' +
+      (d.getMonth() + 1 > 9 ? (d.getMonth() + 1).toString() : '0' + (d.getMonth() + 1)) +
+      '-' +
+      (d.getDate() > 9 ? d.getDate().toString() : '0' + d.getDate().toString())
+    );
+  };
+
+  const today = getYmd10();
   return (
     <StyledRoot>
       <Container>
@@ -14,7 +36,13 @@ function Step3() {
             그거...
             <br /> 언제쯤 받고 싶어?
           </Question>
-          <InputBox type='date'></InputBox>
+          <InputBox
+            type='date'
+            onChange={(e) => {
+              test(e);
+            }}
+            min={today}
+          ></InputBox>
         </Main>
         <StepView></StepView>
         <StepButton></StepButton>
@@ -60,6 +88,7 @@ const Title = styled.h1`
 const Question = styled.p`
   font-weight: 400;
   font-size: 1.8rem;
+  text-align: center;
 `;
 const InputBox = styled.input`
   outline: none;

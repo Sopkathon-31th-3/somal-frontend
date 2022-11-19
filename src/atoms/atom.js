@@ -13,4 +13,4 @@ const wishDate = atom({
   default: '',
 });
 
-export { wishItem,wishPrice,wishDate };
+export { wishItem, wishPrice, wishDate };

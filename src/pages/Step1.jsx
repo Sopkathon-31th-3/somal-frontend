@@ -3,8 +3,15 @@ import styled from 'styled-components';
 import container from '../assets/image/container.png';
 import StepButton from 'components/common/StepButton';
 import StepView from 'components/common/StepView';
+import { wishItem } from 'atoms/atom';
+import { useRecoilState } from 'recoil';
 
 function Step1() {
+  const [_wishItem, setWishItem] = useRecoilState(wishItem);
+
+  const changeItem = (e) => {
+    setWishItem(e.target.value);
+  };
   return (
     <StyledRoot>
       <Container>
@@ -14,7 +21,7 @@ function Step1() {
             지금 가~장
             <br /> 갖고 싶은게 뭐야?
           </Question>
-          <InputBox></InputBox>
+          <InputBox onChange={(e) => changeItem(e)}></InputBox>
         </Main>
         <StepView></StepView>
         <StepButton></StepButton>
@@ -60,6 +67,7 @@ const Title = styled.h1`
 const Question = styled.p`
   font-weight: 400;
   font-size: 1.8rem;
+  text-align: center;
 `;
 const InputBox = styled.input`
   outline: none;

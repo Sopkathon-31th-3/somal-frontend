@@ -3,8 +3,18 @@ import styled from 'styled-components';
 import container from '../assets/image/container.png';
 import StepButton from 'components/common/StepButton';
 import StepView from 'components/common/StepView';
+import { wishPrice } from '../atoms/atom';
+import { useRecoilState } from 'recoil';
 
 function Step2() {
+  const [_wishPrice, setWishPrice] = useRecoilState(wishPrice);
+
+  const handlePrice = (e) => {
+    const newPrice = Number(e.target.value);
+    // setPriceState(newPrice.toLocaleString());
+    setWishPrice(newPrice);
+  };
+
   return (
     <StyledRoot>
       <Container>
@@ -16,9 +26,8 @@ function Step2() {
           </Question>
 
           <InputContainer>
-            {' '}
             <p>₩</p>
-            <InputBox></InputBox>
+            <InputBox type='number' onChange={(e) => handlePrice(e)} value={_wishPrice}></InputBox>
           </InputContainer>
         </Main>
         <StepView></StepView>
@@ -70,6 +79,7 @@ const Title = styled.h1`
 const Question = styled.p`
   font-weight: 400;
   font-size: 1.8rem;
+  text-align: center;
 `;
 const InputContainer = styled.div`
   border: none;
