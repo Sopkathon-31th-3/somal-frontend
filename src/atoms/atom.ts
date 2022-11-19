@@ -1,8 +1,16 @@
 import { atom } from 'recoil';
 
-const sampleState = atom({
-  key: 'sampleState',
+const wishItem = atom({
+  key: 'wishItem',
+  default: '',
+});
+const wishPrice = atom({
+  key: 'wishPrice',
+  default: '',
+});
+const wishDate = atom({
+  key: 'wishDate',
   default: '',
 });
 
-export { sampleState };
+export { wishItem,wishPrice,wishDate };
