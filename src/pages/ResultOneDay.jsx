@@ -6,12 +6,20 @@ import presentBox from '../assets/image/presentbox.png';
 import ResultSanta from '../assets/image/ResultSanta.svg';
 import NextIcon from '../assets/icon/NextIcon.svg';
 import { Link } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { wishDate, wishPrice, wishItem } from 'atoms/atom';
+//dayjs format
+import dayjs from 'dayjs';
 
 export default function Result() {
-  const product = '맥북 M1 에어';
-  const year = 2023;
-  const month = 1;
-  const date = 1;
+  const [_wishDate, setWishDate] = useRecoilState(wishDate);
+  const [_wishItem, setWishItem] = useRecoilState(wishItem);
+  const [_wishPrice, setWishPrice] = useRecoilState(wishPrice);
+
+  const product = _wishItem;
+  const year = dayjs(_wishDate).year();
+  const month = dayjs(_wishDate).month();
+  const date = dayjs(_wishDate).date();
   const day = 1;
   const foodName = '뿌링클';
   const foodNum = 1;
@@ -27,6 +35,12 @@ export default function Result() {
   const foodNum3 = 'n';
   const foodNum4 = 'n';
   const foodNum5 = 'n';
+
+  //wishItem, wishPrice, wishDate
+
+  console.log(_wishDate);
+  console.log(_wishItem);
+  console.log(dayjs(_wishDate).year());
 
   return (
     <div>
