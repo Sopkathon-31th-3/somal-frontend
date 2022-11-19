@@ -10,27 +10,40 @@ import gookbap from 'assets/image/gookbap.svg';
 import hotdog from 'assets/image/hotdog.svg';
 import logo from 'assets/image/logo.svg';
 import optionBalloon from 'assets/image/option_balloon.png';
+import optionBalloonRed from 'assets/image/option_balloon_red.svg';
 import pizza from 'assets/image/pizza.svg';
 import ramen from 'assets/image/ramen.svg';
 import ttheokbokki from 'assets/image/tteokbokki.svg';
+import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styled, { css } from 'styled-components';
+import { likeFood } from 'atoms/atom';
+import { useRecoilState } from 'recoil';
 
 function Step4() {
-  const foodImgList = [
-    chicken,
-    boonguhppang,
-    coffee,
-    gookbap,
-    burger,
-    ttheokbokki,
-    gimbap,
-    hotdog,
-    pizza,
-    ramen,
+  const foodList = [
+    { src: chicken, name: '뿌링클', price: 22000 },
+    { src: boonguhppang, name: '붕어빵', price: 500 },
+    { src: coffee, name: '스벅 아아', price: 4500 },
+    { src: gookbap, name: '순대 국밥', price: 9000 },
+    { src: burger, name: '빅맥세트', price: 7500 },
+    { src: ttheokbokki, name: '엽기 떡볶이', price: 14000 },
+    { src: gimbap, name: '김가네 김밥', price: 3900 },
+    { src: hotdog, name: '핫도그', price: 1800 },
+    { src: pizza, name: '피자스쿨', price: 10900 },
+    { src: ramen, name: '신라면', price: 820 },
   ];
   const location = useLocation();
+  const [_likeFood, setLikeFood] = useRecoilState(likeFood);
   const stepNum = location.pathname.slice(-1);
+  const [selected, setSelected] = useState(null);
+  const handleSelect = (foodItem, idx) => {
+    setSelected(idx);
+    setLikeFood(foodItem.name);
+  };
+
+  useEffect(() => {}, [selected, setSelected]);
+
   return (
     <StyledRoot>
       <Step4Background>
@@ -41,11 +54,17 @@ function Step4() {
           애정하는 음식이...뭐였지?
         </Question>
         <OptionArea>
-          {foodImgList.map((foodImg, index) => (
-            <OptionBackground key={index}>
-              <FoodImg src={foodImg} key={index} />
-              <p>뿌링클</p>
-              <span>20000원</span>
+          {foodList.map((foodItem, index) => (
+            // {index===selected ? ():()}
+            <OptionBackground
+              onClick={() => handleSelect(foodItem, index)}
+              key={index}
+              idx={index}
+              selected={selected}
+            >
+              <FoodImg src={foodItem.src} key={index} />
+              <p>{foodItem.name}</p>
+              <span>{foodItem.price}원</span>
             </OptionBackground>
           ))}
         </OptionArea>
@@ -56,10 +75,12 @@ function Step4() {
           <StepItem isRed={stepNum === '4'}></StepItem>
         </StepWrapper>
         <ButtonContainer>
-          <PrevButtonContainer>
-            <img src={prevIcon} alt='prevBtn'></img>
-            <p>이전</p>
-          </PrevButtonContainer>
+          <Link to='/step3'>
+            <PrevButtonContainer>
+              <img src={prevIcon} alt='prevBtn'></img>
+              <p>이전</p>
+            </PrevButtonContainer>
+          </Link>
           <Link to='/loading'>
             <NextButtonContainer>
               <p>다음</p>
@@ -121,7 +142,20 @@ const OptionArea = styled.div`
 const OptionBackground = styled.div`
   width: 14rem;
   height: 16.5rem;
-  background-image: url(${optionBalloon});
+  cursor: pointer;
+
+  ${({ idx, selected }) =>
+    idx === selected &&
+    css`
+      background-image: url(${optionBalloonRed});
+    `}
+  ${({ idx, selected }) =>
+    idx !== selected &&
+    css`
+      background-image: url(${optionBalloon});
+    `}
+    /* background-color: green; */
+  /* background-image: url(${optionBalloon}); */
   position: relative;
 `;
 
