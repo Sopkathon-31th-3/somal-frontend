@@ -1,3 +1,5 @@
+import nextIcon from 'assets/icon/nextIcon.png';
+import prevIcon from 'assets/icon/prevIcon.png';
 import bigBalloon from 'assets/image/big_balloon.svg';
 import boonguhppang from 'assets/image/boonguhppang.svg';
 import burger from 'assets/image/burger.svg';
@@ -6,11 +8,13 @@ import coffee from 'assets/image/coffee.svg';
 import gimbap from 'assets/image/gimbap.svg';
 import gookbap from 'assets/image/gookbap.svg';
 import hotdog from 'assets/image/hotdog.svg';
+import logo from 'assets/image/logo.svg';
 import optionBalloon from 'assets/image/option_balloon.png';
 import pizza from 'assets/image/pizza.svg';
 import ramen from 'assets/image/ramen.svg';
 import ttheokbokki from 'assets/image/tteokbokki.svg';
-import styled from 'styled-components';
+import { useLocation } from 'react-router-dom';
+import styled, { css } from 'styled-components';
 
 function Step4() {
   const foodImgList = [
@@ -25,9 +29,17 @@ function Step4() {
     pizza,
     ramen,
   ];
+  const location = useLocation();
+  const stepNum = location.pathname.slice(-1);
   return (
     <StyledRoot>
       <Step4Background>
+        <Logo src={logo} />
+        <Question>
+          너가 가장
+          <br />
+          애정하는 음식이...뭐였지?
+        </Question>
         <OptionArea>
           {foodImgList.map((foodImg, index) => (
             <OptionBackground>
@@ -37,6 +49,22 @@ function Step4() {
             </OptionBackground>
           ))}
         </OptionArea>
+        <StepWrapper>
+          <StepItem isRed={stepNum === '1'}></StepItem>
+          <StepItem isRed={stepNum === '2'}></StepItem>
+          <StepItem isRed={stepNum === '3'}></StepItem>
+          <StepItem isRed={stepNum === '4'}></StepItem>
+        </StepWrapper>
+        <ButtonContainer>
+          <PrevButtonContainer>
+            <img src={prevIcon} alt='prevBtn'></img>
+            <p>이전</p>
+          </PrevButtonContainer>
+          <NextButtonContainer>
+            <p>다음</p>
+            <img src={nextIcon} alt='nextBtn'></img>
+          </NextButtonContainer>
+        </ButtonContainer>
       </Step4Background>
     </StyledRoot>
   );
@@ -60,9 +88,6 @@ const Step4Background = styled.div`
   margin-bottom: 11.9rem;
   background-image: url(${bigBalloon});
   background-repeat: no-repeat;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   text-align: center;
 
   p {
@@ -75,12 +100,20 @@ const Step4Background = styled.div`
   }
 `;
 
+const Question = styled.h1`
+  font-weight: 400;
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 2.8rem;
+`;
+
 const OptionArea = styled.div`
   width: 29.2rem;
   height: 85.3rem;
   display: flex;
   flex-wrap: wrap;
   gap: 1.2rem;
+  margin-left: 4.2rem;
 `;
 
 const OptionBackground = styled.div`
@@ -96,4 +129,58 @@ const FoodImg = styled.img`
   position: absolute;
   top: 1.6rem;
   left: 3.2rem;
+`;
+
+const Logo = styled.img`
+  width: 20.4rem;
+  height: 2rem;
+  margin: 5.6rem 0 5.9rem 0;
+`;
+
+const StepWrapper = styled.div`
+  width: 9.2rem;
+  height: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6rem;
+  margin-left: 13.3rem;
+`;
+
+const StepItem = styled.div`
+  width: 0.8rem;
+  height: 0.8rem;
+  background: #d9d9d9;
+
+  ${({ isRed }) =>
+    isRed &&
+    css`
+      background-color: #ee5959;
+    `}
+`;
+
+const PrevButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & > p {
+    font-size: 1.8rem;
+    margin-left: 1.7rem;
+  }
+`;
+
+const NextButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & > p {
+    font-size: 1.8rem;
+    margin-right: 1.7rem;
+  }
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
 `;
