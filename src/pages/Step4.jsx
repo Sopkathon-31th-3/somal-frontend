@@ -13,7 +13,7 @@ import optionBalloon from 'assets/image/option_balloon.png';
 import pizza from 'assets/image/pizza.svg';
 import ramen from 'assets/image/ramen.svg';
 import ttheokbokki from 'assets/image/tteokbokki.svg';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 function Step4() {
@@ -42,7 +42,7 @@ function Step4() {
         </Question>
         <OptionArea>
           {foodImgList.map((foodImg, index) => (
-            <OptionBackground>
+            <OptionBackground key={index}>
               <FoodImg src={foodImg} key={index} />
               <p>뿌링클</p>
               <span>20000원</span>
@@ -60,10 +60,12 @@ function Step4() {
             <img src={prevIcon} alt='prevBtn'></img>
             <p>이전</p>
           </PrevButtonContainer>
-          <NextButtonContainer>
-            <p>다음</p>
-            <img src={nextIcon} alt='nextBtn'></img>
-          </NextButtonContainer>
+          <Link to='/loading'>
+            <NextButtonContainer>
+              <p>다음</p>
+              <img src={nextIcon} alt='nextBtn'></img>
+            </NextButtonContainer>
+          </Link>
         </ButtonContainer>
       </Step4Background>
     </StyledRoot>
@@ -160,23 +162,23 @@ const StepItem = styled.div`
 
 const PrevButtonContainer = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
 
   & > p {
     font-size: 1.8rem;
     margin-left: 1.7rem;
+    margin-bottom: 9.5rem;
   }
 `;
 
 const NextButtonContainer = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
 
   & > p {
     font-size: 1.8rem;
     margin-right: 1.7rem;
+    margin-bottom: 9.5rem;
   }
 `;
 

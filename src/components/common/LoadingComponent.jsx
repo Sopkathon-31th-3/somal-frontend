@@ -1,11 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
 import santa from 'assets/image/santa.svg';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 
 function Loading() {
   const [message, setMessage] = useState('');
   const [count, setCount] = useState(0);
   const completionWord = '로 딩 중';
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setTimeout(() => {
+      navigate('/resultoneday');
+    }, 3000);
+  }, []);
 
   useEffect(() => {
     const typingInterval = setInterval(() => {
