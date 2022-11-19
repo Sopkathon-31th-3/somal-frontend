@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
     min-height: 100vh;
     margin: 0 auto;
     position: relative;
+    background-color: #EE5959;
   }
 
   html,
