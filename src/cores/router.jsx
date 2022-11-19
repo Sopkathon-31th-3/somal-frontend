@@ -1,16 +1,16 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
-import Sample from 'pages/Sample';
+import Ending from 'pages/Ending';
+import Landing from 'pages/Landing';
 import Step4 from 'pages/Step4';
 
 function Router() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/sample' element={<Sample />} />
-        <Route path='/step4' element={<Step4 />} />
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path='/' element={<Landing />} />
+      <Route path='/ending' element={<Ending />} />
+      <Route path='/step4' element={<Step4 />} />
+    </Routes>
   );
 }
 
