@@ -53,41 +53,28 @@ export default function Result() {
           </PresentBoxWrapper>
           <TextWrapperWrapper>
             <TextWrapper>
+              <Text>자자,</Text>
               <Text>
-                너.. <BoldRed>{product}</BoldRed>
+                <Bolded>나림이</Bolded>
+                에게 <BoldRed>에어팟 맥스</BoldRed>
               </Text>
-              {/*recoil*/}
-              <Text> 꼭 사 ㅋ</Text>
-              <Text>안사면 무조건 후회함</Text>
-              <Text>진짜로</Text>
-              <Text>지금 삘왔을 때 사야돼</Text>
-              <Text>고민은 배송만 늦출 뿐ㅋ</Text>
-              <Blank></Blank>
-              <Text>그냥...</Text>
-              {/* <Text>
-                <Bolded>{year}</Bolded>년 <Bolded>{month}</Bolded>월 <Bolded>{date}</Bolded>일까지
-              </Text> */}
-              {/*recoil*/}
-              <Text>
-                하루에
-                <Bolded>
-                  {' '}
-                  {foodName} {foodNum}개
-                </Bolded>
-                <Bolded> </Bolded>포기하면 돼 ㅋ
-              </Text>
-              {/*axios + recoil*/}
-              <Text>그정도야 뭐...</Text>
-              <Text>당연히 할 수 있잖아? ㅎ</Text>
+              <Text>선물해주기 프로젝트</Text>
+              <Text>선물 주기 생각보다 쉽다~🎁</Text>
               <Blank></Blank>
               <Text>
-                <BoldRed>{foodName}</BoldRed> 포기하는 게{' '}
+                <BoldRed>뿌링클 200개</BoldRed>만 포기하면 돼ㅋ
               </Text>
-              {/*recoil*/}
-              <Text>정 어렵다면,,,...</Text>
+
+              <Text>
+                <Bolded>나림이</Bolded>를 향한 애정,
+              </Text>
+              <Text>그 정도는 되잖아~❤️?</Text>
+              <Blank></Blank>
             </TextWrapper>
           </TextWrapperWrapper>
           <DailyFoodWrapper>
+            <p> 만약 어렵다면~</p>
+            <Blank></Blank>
             <p>
               {food1} 하루에 {foodNum1}마리 먹지 말든지 ㅋㅎ ~
             </p>
@@ -179,7 +166,8 @@ const Blank = styled.div`
 `;
 
 const TextWrapper = styled.div`
-  width: 24.7rem;
+  /* width: 24.7rem; */
+  width: 40rem;
 `;
 
 const TextWrapperWrapper = styled.div`
