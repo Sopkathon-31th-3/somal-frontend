@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import ballon from '../assets/image/ballon.svg';
-import santa from '../assets/image/santa.svg';
-import present from '../assets/image/present.svg';
+import santa from '../assets/image/santa.png';
+import present from '../assets/image/present.png';
 
 function Landing() {
   return (
@@ -11,14 +11,14 @@ function Landing() {
       <StWrapper>
         <StTitle src={ballon} alt='title' />
         <StStart>
-          <img src={santa} alt='santa' />
+          <Santa src={santa} alt='santa' />
 
           <Link to={'/step1'}>
             <button type='button'>시작하기</button>
           </Link>
         </StStart>
       </StWrapper>
-      <img src={present} alt='present' />
+      <Present src={present} alt='present' />
     </Stcontainer>
   );
 }
@@ -48,6 +48,15 @@ const StTitle = styled.img`
 
   width: 26.5rem;
   height: 16.2rem;
+`;
+
+const Santa = styled.img`
+  width: 17.2rem;
+  height: 17.2rem;
+`;
+
+const Present = styled.img`
+  /* width: 45rem; */
 `;
 
 const StStart = styled.div`
