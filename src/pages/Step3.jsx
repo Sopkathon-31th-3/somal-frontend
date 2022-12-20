@@ -105,6 +105,11 @@ const InputBox = styled.input`
   font-family: Galmuri11;
   /* text-align: center; */
   padding-left: 2rem;
+  ::-webkit-outer-spin-button,
+  ::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 `;
 
 const Logo = styled.img`

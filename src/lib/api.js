@@ -9,10 +9,14 @@ const client = axios.create({
   },
 });
 
-const postWishData = async ({ foodName, wishItemPrice }) => {
-  const post = await client.post('/result', {
-    foodName,
-    wishItemPrice,
-  });
-  return post;
+export const postWishData = async ({ foodName, wishItemPrice }) => {
+  try {
+    const post = await client.post('/result', {
+      foodName,
+      wishItemPrice,
+    });
+    return post;
+  } catch (err) {
+    alert(err);
+  }
 };
