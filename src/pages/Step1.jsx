@@ -38,12 +38,12 @@ function Step1() {
 export default Step1;
 
 const StyledRoot = styled.div`
-  height: 100vh;
   width: 100%;
   background-color: #ee5959;
   display: flex;
   justify-content: center;
-  align-items: center;
+  position: absolute;
+  top: 3.5rem;
 `;
 
 const Container = styled.div`
