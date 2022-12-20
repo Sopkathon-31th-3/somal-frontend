@@ -56,7 +56,7 @@ const Santa = styled.img`
 `;
 
 const Present = styled.img`
-  /* width: 45rem; */
+  width: 45rem;
 `;
 
 const StStart = styled.div`
