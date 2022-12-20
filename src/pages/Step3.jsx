@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import container from '../assets/image/container.png';
 import StepButton from 'components/common/StepButton';
@@ -9,6 +9,7 @@ import { useRecoilState } from 'recoil';
 
 // input창 3자리 자동 콤마 삽입
 const inputPriceFormat = (str) => {
+  str.replace(/(^0+)/, '');
   const comma = (str) => {
     str = String(str);
     return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
@@ -25,8 +26,13 @@ function Step3() {
   const [price, setPrice] = useState();
 
   const handlePrice = (e) => {
-    const newPrice = Number(e.target.value);
-    setWishPrice(newPrice);
+    const newPrice = e.target.value.split(',').reduce((curr, acc) => curr + acc, '');
+    if (newPrice[0] === '0' || newPrice > 9999999999) {
+      alert('금액 범위는 1~9,999,999,999원입니다!');
+    } else {
+      setPrice(inputPriceFormat(e.target.value));
+      setWishPrice(newPrice);
+    }
   };
 
   return (
@@ -43,15 +49,16 @@ function Step3() {
             <p>₩</p>
             <InputBox
               type='text'
-              value={price}
+              maxlength='13'
+              value={price || ''}
               onChange={(e) => {
-                setPrice(inputPriceFormat(e.target.value));
+                handlePrice(e);
               }}
             ></InputBox>
           </InputContainer>
         </Main>
-        <StepView></StepView>
-        <StepButton></StepButton>
+        <StepView />
+        <StepButton />
       </Container>
     </StyledRoot>
   );
