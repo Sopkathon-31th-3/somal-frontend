@@ -92,10 +92,6 @@ const Main = styled.div`
   }
 `;
 
-const Title = styled.h1`
-  font-weight: bold;
-  font-size: 2.4rem;
-`;
 const Question = styled.p`
   font-weight: 400;
   font-size: 1.8rem;
@@ -122,8 +118,7 @@ const InputBox = styled.input`
   width: 100%;
   font-size: 1.8rem;
   font-family: Galmuri11;
-  /* text-align: center; */
-  padding-left: 2rem;
+  text-align: center;
   ::-webkit-outer-spin-button,
   ::-webkit-inner-spin-button {
     -webkit-appearance: none;
