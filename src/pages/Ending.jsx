@@ -31,7 +31,7 @@ function Ending() {
           <button onClick={ResetRecoil}>처음으로</button>
         </Link>
         <CopyToClipboard
-          text={window.location.host}
+          text={`https://somal-frontend.vercel.app/`}
           onCopy={() => alert('링크가 클립보드에 복사되었어요!')}
         >
           <button>공유하기</button>
