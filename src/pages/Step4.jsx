@@ -105,17 +105,16 @@ export default Step4;
 
 const StyledRoot = styled.div`
   width: 100%;
-  height: 100vh;
   display: flex;
   justify-content: center;
   position: absolute;
+  top: 3.5rem;
 `;
 
 const Step4Background = styled.div`
   width: 36rem;
   height: 142.3rem;
   position: relative;
-  top: 3.5rem;
   margin-bottom: 11.9rem;
   background-image: url(${bigBalloon});
   background-repeat: no-repeat;

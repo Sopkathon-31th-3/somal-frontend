@@ -38,7 +38,7 @@ function Loading() {
   return (
     <StLoadingContainer>
       <StLoading>
-        <img src={santa} alt='santa' />
+        <Santa src={santa} alt='santa' />
         <p>{message}</p>
       </StLoading>
     </StLoadingContainer>
@@ -53,6 +53,11 @@ const StLoadingContainer = styled.div`
   align-items: center;
 
   height: 100vh;
+`;
+
+const Santa = styled.img`
+  width: 17.2rem;
+  height: 17.2rem;
 `;
 
 const StLoading = styled.div`

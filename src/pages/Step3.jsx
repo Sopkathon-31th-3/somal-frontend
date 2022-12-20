@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, useState } from 'react';
 import styled from 'styled-components';
 import container from '../assets/image/container.png';
 import StepButton from 'components/common/StepButton';
@@ -7,20 +7,45 @@ import { wishPrice } from '../atoms/atom';
 import logo from '../assets/image/logo.svg';
 import { useRecoilState } from 'recoil';
 
+// input창 3자리 자동 콤마 삽입
+const inputPriceFormat = (str) => {
+  str.replace(/(^0+)/, '');
+  const comma = (str) => {
+    str = String(str);
+    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+  };
+  const uncomma = (str) => {
+    str = String(str);
+    return str.replace(/[^\d]+/g, '');
+  };
+  return comma(uncomma(str));
+};
+
 function Step3() {
   const [_wishPrice, setWishPrice] = useRecoilState(wishPrice);
+  const [price, setPrice] = useState();
 
   const handlePrice = (e) => {
-    const newPrice = Number(e.target.value);
-    // setPriceState(newPrice.toLocaleString());
-    setWishPrice(newPrice);
+    let currentData = e.target.value;
+
+    // 숫자만 입력 가능
+    let checkNumber = currentData.charCodeAt([currentData.length - 1]);
+    if (checkNumber < 48 || checkNumber > 57) return;
+
+    const newPrice = currentData.split(',').reduce((curr, acc) => curr + acc, '');
+    if (newPrice[0] === '0' || newPrice > 9999999999) {
+      alert('금액 범위는 1~9,999,999,999원입니다!');
+    } else {
+      setPrice(inputPriceFormat(e.target.value));
+      setWishPrice(Number(newPrice));
+    }
   };
 
   return (
     <StyledRoot>
       <Container>
         <Main>
-          <Logo src={logo} />
+          <Logo src={logo} alt='로고' />
           <Question>
             근데 그거...
             <br /> 얼마짜리더라?
@@ -28,7 +53,14 @@ function Step3() {
 
           <InputContainer>
             <p>₩</p>
-            <InputBox type='number' onChange={(e) => handlePrice(e)} value={_wishPrice}></InputBox>
+            <InputBox
+              type='text'
+              maxlength='13'
+              value={price || ''}
+              onChange={(e) => {
+                handlePrice(e);
+              }}
+            ></InputBox>
           </InputContainer>
         </Main>
         <StepView></StepView>
@@ -41,23 +73,24 @@ function Step3() {
 export default Step3;
 
 const StyledRoot = styled.div`
-  height: 100vh;
   width: 100%;
   background-color: #ee5959;
   display: flex;
   justify-content: center;
-  align-items: center;
+  position: absolute;
+  top: 3.5rem;
 `;
 
 const Container = styled.div`
-  width: 37rem;
-  height: 60rem;
-  left: 14px;
+  width: 36rem;
+  height: 59.7rem;
+  /* left: 1.4rem; */
   display: flex;
   flex-direction: column;
   align-items: center;
   background-image: url(${container});
   background-repeat: no-repeat;
+  background-size: cover;
 `;
 
 const Main = styled.div`
@@ -73,10 +106,6 @@ const Main = styled.div`
   }
 `;
 
-const Title = styled.h1`
-  font-weight: bold;
-  font-size: 2.4rem;
-`;
 const Question = styled.p`
   font-weight: 400;
   font-size: 1.8rem;
@@ -103,8 +132,12 @@ const InputBox = styled.input`
   width: 100%;
   font-size: 1.8rem;
   font-family: Galmuri11;
-  /* text-align: center; */
-  padding-left: 2rem;
+  text-align: center;
+  ::-webkit-outer-spin-button,
+  ::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 `;
 
 const Logo = styled.img`
