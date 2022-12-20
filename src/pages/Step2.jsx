@@ -10,7 +10,6 @@ import { useRecoilState } from 'recoil';
 function Step2() {
   window.scrollTo({
     top: 0,
-    behavior: 'smooth',
   });
   const [_wishItem, setWishItem] = useRecoilState(wishItem);
 

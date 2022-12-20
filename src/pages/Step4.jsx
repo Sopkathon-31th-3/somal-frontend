@@ -21,10 +21,6 @@ import { likeFood } from 'atoms/atom';
 import { useRecoilState } from 'recoil';
 
 function Step4() {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth',
-  });
   const navigate = useNavigate();
 
   const onClickNext = () => {

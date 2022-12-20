@@ -24,7 +24,6 @@ const inputPriceFormat = (str) => {
 function Step3() {
   window.scrollTo({
     top: 0,
-    behavior: 'smooth',
   });
   const [_wishPrice, setWishPrice] = useRecoilState(wishPrice);
   const [price, setPrice] = useState();
