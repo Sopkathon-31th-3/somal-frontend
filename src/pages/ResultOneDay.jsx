@@ -37,6 +37,29 @@ export default function Result() {
   const foodNum4 = 'n';
   const foodNum5 = 'n';
 
+  function checkName(name, num) {
+    const charCode = name.charCodeAt(name.length - 1);
+
+    const consonantCode = (charCode - 44032) % 28;
+
+    if (consonantCode === 0) {
+      //받침 없음
+      return (
+        <Text>
+          <Bolded>{name}</Bolded>
+          {num === 1 ? '에게' : '를'}
+        </Text>
+      );
+    }
+
+    return (
+      <Text>
+        <Bolded>{name}이</Bolded>
+        {num === 1 ? '에게' : '를'}
+      </Text>
+    );
+  }
+
   //wishItem, wishPrice, wishDate
 
   // console.log(_wishDate);
@@ -53,10 +76,9 @@ export default function Result() {
           </PresentBoxWrapper>
           <TextWrapperWrapper>
             <TextWrapper>
-              <Text>자자,</Text>
               <Text>
-                <Bolded>나림이</Bolded>
-                에게 <BoldRed>에어팟 맥스</BoldRed>
+                {checkName('혜인', 1)}
+                <BoldRed>에어팟 맥스</BoldRed>
               </Text>
               <Text>선물해주기 프로젝트</Text>
               <Text>선물 주기 생각보다 쉽다~🎁</Text>
@@ -64,10 +86,7 @@ export default function Result() {
               <Text>
                 <BoldRed>뿌링클 200개</BoldRed>만 포기하면 돼ㅋ
               </Text>
-
-              <Text>
-                <Bolded>나림이</Bolded>를 향한 애정,
-              </Text>
+              <Text>{checkName('혜인', 0)} 향한 애정,</Text>
               <Text>그 정도는 되잖아~❤️?</Text>
               <Blank></Blank>
             </TextWrapper>
