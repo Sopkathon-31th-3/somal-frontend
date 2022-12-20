@@ -4,12 +4,19 @@ import CopyToClipboard from 'react-copy-to-clipboard';
 import Union from '../assets/image/Union.png';
 import presentBox from '../assets/image/presentbox.png';
 import ResultSanta from '../assets/image/ResultSanta.svg';
+import resultContainer1 from '../assets/image/resultContainer1.png';
+import resultContainer2 from '../assets/image/resultContainer2.png';
+import resultContainer2Test from '../assets/image/resultContainer2_test.png';
+
+import foods from '../assets/image/foods.png';
+import scrollIcon from '../assets/image/scrollIcon.png';
+import endingIcon from '../assets/image/endingIcon.png';
+
 import NextIcon from '../assets/icon/NextIcon.svg';
 import { Link } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { wishPrice, wishItem, likeFood } from 'atoms/atom';
 //dayjs format
-import dayjs from 'dayjs';
 
 export default function Result() {
   // const [_wishDate, setWishDate] = useRecoilState(wishDate);
@@ -45,94 +52,78 @@ export default function Result() {
     if (consonantCode === 0) {
       //받침 없음
       return (
-        <Text>
+        <>
           <Bolded>{name}</Bolded>
           {num === 1 ? '에게' : '를'}
-        </Text>
+        </>
       );
     }
 
     return (
-      <Text>
+      <>
         <Bolded>{name}이</Bolded>
         {num === 1 ? '에게' : '를'}
-      </Text>
+      </>
     );
   }
 
-  //wishItem, wishPrice, wishDate
-
-  // console.log(_wishDate);
-  // console.log(_wishItem);
-  // console.log(dayjs(_wishDate).year());
-
   return (
-    <div>
-      {/**/}
-      <WrapperWrapper>
-        <Wrapper>
-          <PresentBoxWrapper>
-            <img src={presentBox} />
-          </PresentBoxWrapper>
-          <TextWrapperWrapper>
-            <TextWrapper>
-              <Text>
-                {checkName('혜인', 1)}
-                <BoldRed>에어팟 맥스</BoldRed>
-              </Text>
-              <Text>선물해주기 프로젝트</Text>
-              <Text>선물 주기 생각보다 쉽다~🎁</Text>
-              <Blank></Blank>
-              <Text>
-                <BoldRed>뿌링클 200개</BoldRed>만 포기하면 돼ㅋ
-              </Text>
-              <Text>{checkName('혜인', 0)} 향한 애정,</Text>
-              <Text>그 정도는 되잖아~❤️?</Text>
-              <Blank></Blank>
-            </TextWrapper>
-          </TextWrapperWrapper>
-          <DailyFoodWrapper>
-            <p> 만약 어렵다면~</p>
-            <Blank></Blank>
-            <p>
-              {food1} 하루에 {foodNum1}마리 먹지 말든지 ㅋㅎ ~
-            </p>
-            <p>
-              {food2} 하루에 {foodNum2}잔 먹지 말든지 ㅋㅋ ~
-            </p>
-            <p>
-              {food3} 하루에 {foodNum3}개 먹지 말든지 ㅎㅋ ~
-            </p>
-            <p>
-              {food4} 하루에 {foodNum4}개 먹지 말든지 ㅋㅋ ~
-            </p>
-            <p>
-              {food5} 하루에 {foodNum5}봉지 먹지 말든지 ㅋㅋㅋ ~
-            </p>
-          </DailyFoodWrapper>
-          <SantaWrapper>
-            <img src={ResultSanta} alt='result Santa'></img>
-          </SantaWrapper>
-          <BelowButton>
-            <CopyToClipboard
-              text={window.location.host}
-              onCopy={() => alert('링크가 클립보드에 복사되었어요!')}
-            >
-              <button>
-                공유하기
-                {/* <img className='link shareicon' src={link} /> */}
-              </button>
-            </CopyToClipboard>
-            <ComplainWrapper>
-              <Link to={'/ending'}>
-                <button>불만 있니?</button>
-                <img src={NextIcon}></img>
-              </Link>
-            </ComplainWrapper>
-          </BelowButton>
-        </Wrapper>
-      </WrapperWrapper>
-    </div>
+    <StyledRoot>
+      <Container1>
+        <TextWrapper>
+          <Text>
+            <Bolded>나림이</Bolded>
+            에게
+          </Text>
+          <Text>
+            <BoldRed>에어팟 맥스</BoldRed>
+          </Text>
+          <Text>선물해주기 프로젝트</Text>
+          <Text>선물 주기 생각보다 쉽다~🎁</Text>
+          <Blank></Blank>
+          <Text>
+            <BoldRed>뿌링클 200개</BoldRed>만
+          </Text>
+          <Text> 포기하면 돼ㅋ</Text>
+          <Text>{checkName('혜인', 0)} 향한 애정,</Text>
+          <Text>그 정도는 되잖아~❤️?</Text>
+          <Blank></Blank>
+        </TextWrapper>
+        <DailyFoodWrapper>
+          <p> 만약 어렵다면~</p>
+          <Blank></Blank>
+          <p>
+            {food1} {foodNum1}마리 먹지 말든지 ㅋㅎ ~
+          </p>
+          <p>
+            {food2} {foodNum2}잔 먹지 말든지 ㅋㅋ ~
+          </p>
+          <p>
+            {food3} {foodNum3}개 먹지 말든지 ㅎㅋ ~
+          </p>
+          <p>
+            {food4} {foodNum4}개 먹지 말든지 ㅋㅋ ~
+          </p>
+          <p>
+            {food5} {foodNum5}봉지 먹지 말든지 ㅋㅋㅋ ~
+          </p>
+        </DailyFoodWrapper>
+        <ScrollIcon src={scrollIcon} alt='scrollIcon'></ScrollIcon>
+      </Container1>
+      <DescText>화면을 캡쳐해서 네 산타에게 보내봐!</DescText>
+      <Container2>
+        <SantaText>혜인아 아무래도</SantaText>
+        <SantaText>힘들 것 같아 </SantaText>
+        <SantaText>‘뿌링클'은 죽어도</SantaText>
+        <SantaText>포기 못하겠어 ㅠ</SantaText>
+        <EndingBtn>
+          <Link to={'/ending'}>
+            <NextText>그럼...우리가 들어줄까?</NextText>
+            <EndingIcon src={endingIcon} alt='endingIcon'></EndingIcon>
+          </Link>
+        </EndingBtn>
+      </Container2>
+    </StyledRoot>
   );
 }
 
@@ -140,14 +131,14 @@ const BoldRed = styled.span`
   color: #ee5959;
   font-weight: 700;
   font-family: Galmuri11, sans-serif;
-  font-size: 2.2rem;
+  font-size: 1.8rem;
   line-height: 3.3rem;
 `;
 
 const Bolded = styled.span`
   font-weight: 700;
   font-family: Galmuri11, sans-serif;
-  font-size: 2.2rem;
+  font-size: 1.8rem;
   line-height: 3.3rem;
 `;
 
@@ -159,26 +150,82 @@ const Text = styled.p`
   text-align: center;
 `;
 
-const Wrapper = styled.div`
-  background-image: url(${Union});
+const Container1 = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url(${resultContainer1});
   margin-top: 3.5rem;
-  width: 36rem; // 짤려서 수정했음
-  height: 110.8rem; //짤려서 수정했음
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 37.2rem; // 짤려서 수정했음
+  height: 62.8rem; //짤려서 수정했음
 `;
 
-const WrapperWrapper = styled.div`
+const Container2 = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 3rem;
+  background-image: url(${resultContainer2Test});
+  background-size: cover;
+  /* margin-bottom: 15rem; */
+  background-repeat: no-repeat;
+  width: 37.2rem; // 짤려서 수정했음
+  height: 35.3rem; //짤려서 수정했음
+`;
+
+const SantaText = styled.p`
+  position: relative;
+  left: 5.2rem;
+  top: 7.5rem;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 150%;
+`;
+
+const NextText = styled.span`
+  font-weight: 400;
+  font-size: 18px;
+  /* line-height: 150%; */
+  /* width: 20rem; */
+  margin-right: 1.7rem;
+`;
+
+const EndingIcon = styled.img`
+  width: 1.2rem;
+  height: 1.3rem;
+`;
+
+const EndingBtn = styled.div`
+  position: relative;
+  left: 2rem;
+  top: 22rem;
+  flex: row;
+  justify-content: center;
+  align-items: center;
+  width: 23.7rem;
+  height: 2.7rem;
+`;
+
+const StyledRoot = styled.div`
   width: 39rem;
-  height: 149.7rem;
+  /* height: 149.7rem; */
+  overflow-y: scroll;
+  overflow-x: hidden;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 `;
 
-const PresentBoxWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 4rem;
-  margin-bottom: 1.1rem;
+const DescText = styled.p`
+  font-weight: 400;
+  font-size: 1.2rem;
+  color: white;
 `;
+
+const ScrollIcon = styled.img``;
 
 const Blank = styled.div`
   height: 3.3rem;
@@ -187,49 +234,15 @@ const Blank = styled.div`
 const TextWrapper = styled.div`
   /* width: 24.7rem; */
   width: 40rem;
-`;
-
-const TextWrapperWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
-const SantaWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
-const ComplainWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  & > a {
-    display: flex;
-    align-items: center;
-  }
-  & > a > button {
-    font-family: Galmuri11, sans-serif;
-    font-size: 1.8rem;
-    background-color: white;
-    margin-right: 1.7rem;
-  }
-`;
-
-const BelowButton = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-top: 5.9rem;
-  & > button {
-    font-family: Galmuri11, sans-serif;
-    font-size: 1.8rem;
-    background-color: white;
-    margin-right: 1.7rem;
-  }
-  margin-left: 5.1rem;
-  margin-right: 4.7rem;
+  margin-top: 4.3rem;
 `;
 
 const DailyFoodWrapper = styled.div`
   text-align: center;
+  background-image: url(${foods});
+  background-repeat: no-repeat;
+  width: 26.45rem;
+  height: 11.46rem;
   font-size: 1.2rem;
   margin-top: 2.1rem;
   margin-bottom: 5.4rem;
