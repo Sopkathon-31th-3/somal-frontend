@@ -169,6 +169,7 @@ const Container2 = styled.div`
   margin-bottom: 3rem;
   background-image: url(${resultContainer2Test});
   background-size: cover;
+  margin-bottom: 15rem;
   background-repeat: no-repeat;
   width: 37.2rem; // 짤려서 수정했음
   height: 35.3rem; //짤려서 수정했음
@@ -210,6 +211,7 @@ const EndingBtn = styled.div`
 const StyledRoot = styled.div`
   width: 39rem;
   /* height: 149.7rem; */
+  overflow: scroll;
   display: flex;
   flex-direction: column;
   justify-content: center;
