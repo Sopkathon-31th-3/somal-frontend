@@ -11,7 +11,11 @@ function Step2() {
   const [_wishItem, setWishItem] = useRecoilState(wishItem);
 
   const changeItem = (e) => {
-    setWishItem(e.target.value);
+    if (e.target.value.length < 21) {
+      setWishItem(e.target.value);
+    } else {
+      alert('최대 20자 까지 입력 가능합니다');
+    }
   };
   return (
     <StyledRoot>
@@ -22,10 +26,10 @@ function Step2() {
             크리스마스에 가~장
             <br /> 갖고 싶은게 뭐야?
           </Question>
-          <InputBox onChange={(e) => changeItem(e)}></InputBox>
+          <InputBox onChange={(e) => changeItem(e)} value={_wishItem || ''}></InputBox>
         </Main>
         <StepView></StepView>
-        <StepButton></StepButton>
+        <StepButton data={_wishItem}></StepButton>
       </Container>
     </StyledRoot>
   );

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import nextIcon from '../../assets/icon/nextIcon.png';
 import prevIcon from '../../assets/icon/prevIcon.png';
 
-function StepButton() {
+function StepButton({ data }) {
   const location = useLocation();
   const navigate = useNavigate();
   const stepNum = Number(location.pathname.slice(-1));
@@ -14,10 +14,14 @@ function StepButton() {
     }
   };
   const onClickNext = () => {
-    if (stepNum < 4) {
-      navigate(`/step${stepNum + 1}`);
+    if (data == '' || data == undefined) {
+      alert('값을 입력해주세요!');
     } else {
-      navigate(`/ending`);
+      if (stepNum < 4) {
+        navigate(`/step${stepNum + 1}`);
+      } else {
+        navigate(`/ending`);
+      }
     }
   };
 

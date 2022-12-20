@@ -11,7 +11,11 @@ function Step1() {
   const [_userName, setUserName] = useRecoilState(userName);
 
   const changeName = (e) => {
-    setUserName(e.target.value);
+    if (e.target.value.length < 6) {
+      setUserName(e.target.value);
+    } else {
+      alert('최대 5자 까지 입력 가능합니다');
+    }
   };
   return (
     <StyledRoot>
@@ -22,10 +26,10 @@ function Step1() {
             너의 이름을
             <br /> 알려줘~!
           </Question>
-          <InputBox onChange={(e) => changeName(e)}></InputBox>
+          <InputBox onChange={(e) => changeName(e)} value={_userName || ''}></InputBox>
         </Main>
         <StepView></StepView>
-        <StepButton></StepButton>
+        <StepButton data={_userName}></StepButton>
       </Container>
     </StyledRoot>
   );
