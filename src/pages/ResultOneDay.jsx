@@ -212,6 +212,7 @@ const StyledRoot = styled.div`
   width: 39rem;
   /* height: 149.7rem; */
   overflow-y: scroll;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
