@@ -82,14 +82,15 @@ const StyledRoot = styled.div`
 `;
 
 const Container = styled.div`
-  width: 37rem;
-  height: 60rem;
-  left: 14px;
+  width: 36rem;
+  height: 59.7rem;
+  /* left: 1.4rem; */
   display: flex;
   flex-direction: column;
   align-items: center;
   background-image: url(${container});
   background-repeat: no-repeat;
+  background-size: cover;
 `;
 
 const Main = styled.div`
