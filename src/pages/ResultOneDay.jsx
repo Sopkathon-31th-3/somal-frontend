@@ -44,100 +44,86 @@ export default function Result() {
   const foodNum4 = 'n';
   const foodNum5 = 'n';
 
-  //wishItem, wishPrice, wishDate
+  function checkName(name, num) {
+    const charCode = name.charCodeAt(name.length - 1);
 
-  // console.log(_wishDate);
-  // console.log(_wishItem);
-  // console.log(dayjs(_wishDate).year());
+    const consonantCode = (charCode - 44032) % 28;
+
+    if (consonantCode === 0) {
+      //받침 없음
+      return (
+        <>
+          <Bolded>{name}</Bolded>
+          {num === 1 ? '에게' : '를'}
+        </>
+      );
+    }
+
+    return (
+      <>
+        <Bolded>{name}이</Bolded>
+        {num === 1 ? '에게' : '를'}
+      </>
+    );
+  }
 
   return (
-    <div>
-      {/**/}
-      <WrapperWrapper>
-        <Container1>
-          {/* <PresentBoxWrapper>
-            <img src={presentBox} />
-          </PresentBoxWrapper> */}
-          {/* <TextWrapperWrapper> */}
-          <TextWrapper>
-            <Text>
-              <Bolded>나림이</Bolded>
-              에게
-            </Text>
-            <Text>
-              <BoldRed>에어팟 맥스</BoldRed>
-            </Text>
-            <Text>선물해주기 프로젝트</Text>
-            <Text>선물 주기 생각보다 쉽다~🎁</Text>
-            <Blank></Blank>
-            <Text>
-              <BoldRed>뿌링클 200개</BoldRed>만
-            </Text>
-            <Text> 포기하면 돼ㅋ</Text>
-
-            <Text>
-              <Bolded>나림이</Bolded>를 향한 애정,
-            </Text>
-            <Text>그 정도는 되잖아~❤️?</Text>
-            <Blank></Blank>
-          </TextWrapper>
-          {/* </TextWrapperWrapper> */}
-          <DailyFoodWrapper>
-            <p> 만약 어렵다면~</p>
-            <Blank></Blank>
-            <p>
-              {food1} {foodNum1}마리 먹지 말든지 ㅋㅎ ~
-            </p>
-            <p>
-              {food2} {foodNum2}잔 먹지 말든지 ㅋㅋ ~
-            </p>
-            <p>
-              {food3} {foodNum3}개 먹지 말든지 ㅎㅋ ~
-            </p>
-            <p>
-              {food4} {foodNum4}개 먹지 말든지 ㅋㅋ ~
-            </p>
-            <p>
-              {food5} {foodNum5}봉지 먹지 말든지 ㅋㅋㅋ ~
-            </p>
-          </DailyFoodWrapper>
-          <ScrollIcon src={scrollIcon} alt='scrollIcon'></ScrollIcon>
-        </Container1>
-        <DescText>화면을 캡쳐해서 네 산타에게 보내봐!</DescText>
-        <Container2>
-          <SantaText>혜인아 아무래도</SantaText>
-          <SantaText>힘들 것 같아 </SantaText>
-          <SantaText>‘뿌링클'은 죽어도</SantaText>
-          <SantaText>포기 못하겠어 ㅠ</SantaText>
-          <EndingBtn>
-            <Link to={'/ending'}>
-              <NextText>그럼...우리가 들어줄까?</NextText>
-              <EndingIcon src={endingIcon} alt='endingIcon'></EndingIcon>
-            </Link>
-          </EndingBtn>
-        </Container2>
-        {/* <SantaWrapper>
-          <img src={ResultSanta} alt='result Santa'></img>
-        </SantaWrapper>
-        <BelowButton>
-          <CopyToClipboard
-            text={window.location.host}
-            onCopy={() => alert('링크가 클립보드에 복사되었어요!')}
-          >
-            <button>
-              공유하기
-             
-            </button>
-          </CopyToClipboard>
-          <ComplainWrapper>
-            <Link to={'/ending'}>
-              <button>불만 있니?</button>
-              <img src={NextIcon}></img>
-            </Link>
-          </ComplainWrapper>
-        </BelowButton> */}
-      </WrapperWrapper>
-    </div>
+    <StyledRoot>
+      <Container1>
+        <TextWrapper>
+          <Text>
+            <Bolded>나림이</Bolded>
+            에게
+          </Text>
+          <Text>
+            <BoldRed>에어팟 맥스</BoldRed>
+          </Text>
+          <Text>선물해주기 프로젝트</Text>
+          <Text>선물 주기 생각보다 쉽다~🎁</Text>
+          <Blank></Blank>
+          <Text>
+            <BoldRed>뿌링클 200개</BoldRed>만
+          </Text>
+          <Text> 포기하면 돼ㅋ</Text>
+          <Text>{checkName('혜인', 0)} 향한 애정,</Text>
+          <Text>그 정도는 되잖아~❤️?</Text>
+          <Blank></Blank>
+        </TextWrapper>
+        <DailyFoodWrapper>
+          <p> 만약 어렵다면~</p>
+          <Blank></Blank>
+          <p>
+            {food1} {foodNum1}마리 먹지 말든지 ㅋㅎ ~
+          </p>
+          <p>
+            {food2} {foodNum2}잔 먹지 말든지 ㅋㅋ ~
+          </p>
+          <p>
+            {food3} {foodNum3}개 먹지 말든지 ㅎㅋ ~
+          </p>
+          <p>
+            {food4} {foodNum4}개 먹지 말든지 ㅋㅋ ~
+          </p>
+          <p>
+            {food5} {foodNum5}봉지 먹지 말든지 ㅋㅋㅋ ~
+          </p>
+        </DailyFoodWrapper>
+        <ScrollIcon src={scrollIcon} alt='scrollIcon'></ScrollIcon>
+      </Container1>
+      <DescText>화면을 캡쳐해서 네 산타에게 보내봐!</DescText>
+      <Container2>
+        <SantaText>혜인아 아무래도</SantaText>
+        <SantaText>힘들 것 같아 </SantaText>
+        <SantaText>‘뿌링클'은 죽어도</SantaText>
+        <SantaText>포기 못하겠어 ㅠ</SantaText>
+        <EndingBtn>
+          <Link to={'/ending'}>
+            <NextText>그럼...우리가 들어줄까?</NextText>
+            <EndingIcon src={endingIcon} alt='endingIcon'></EndingIcon>
+          </Link>
+        </EndingBtn>
+      </Container2>
+    </StyledRoot>
   );
 }
 
@@ -170,6 +156,7 @@ const Container1 = styled.div`
   align-items: center;
   background-image: url(${resultContainer1});
   margin-top: 3.5rem;
+  background-size: cover;
   background-repeat: no-repeat;
   width: 37.2rem; // 짤려서 수정했음
   height: 62.8rem; //짤려서 수정했음
@@ -220,7 +207,7 @@ const EndingBtn = styled.div`
   height: 2.7rem;
 `;
 
-const WrapperWrapper = styled.div`
+const StyledRoot = styled.div`
   width: 39rem;
   /* height: 149.7rem; */
   display: flex;
