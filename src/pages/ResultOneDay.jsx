@@ -169,7 +169,7 @@ const Container2 = styled.div`
   margin-bottom: 3rem;
   background-image: url(${resultContainer2Test});
   background-size: cover;
-  margin-bottom: 15rem;
+  /* margin-bottom: 15rem; */
   background-repeat: no-repeat;
   width: 37.2rem; // 짤려서 수정했음
   height: 35.3rem; //짤려서 수정했음
@@ -211,7 +211,7 @@ const EndingBtn = styled.div`
 const StyledRoot = styled.div`
   width: 39rem;
   /* height: 149.7rem; */
-  overflow: scroll;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -226,13 +226,6 @@ const DescText = styled.p`
 
 const ScrollIcon = styled.img``;
 
-const PresentBoxWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 4rem;
-  margin-bottom: 1.1rem;
-`;
-
 const Blank = styled.div`
   height: 3.3rem;
 `;
@@ -241,45 +234,6 @@ const TextWrapper = styled.div`
   /* width: 24.7rem; */
   width: 40rem;
   margin-top: 4.3rem;
-`;
-
-const TextWrapperWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
-const SantaWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
-const ComplainWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  & > a {
-    display: flex;
-    align-items: center;
-  }
-  & > a > button {
-    font-family: Galmuri11, sans-serif;
-    font-size: 1.8rem;
-    background-color: white;
-    margin-right: 1.7rem;
-  }
-`;
-
-const BelowButton = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-top: 5.9rem;
-  & > button {
-    font-family: Galmuri11, sans-serif;
-    font-size: 1.8rem;
-    background-color: white;
-    margin-right: 1.7rem;
-  }
-  margin-left: 5.1rem;
-  margin-right: 4.7rem;
 `;
 
 const DailyFoodWrapper = styled.div`
