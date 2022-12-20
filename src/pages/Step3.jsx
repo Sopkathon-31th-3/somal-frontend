@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, useState } from 'react';
 import styled from 'styled-components';
 import container from '../assets/image/container.png';
 import StepButton from 'components/common/StepButton';
@@ -7,12 +7,25 @@ import { wishPrice } from '../atoms/atom';
 import logo from '../assets/image/logo.svg';
 import { useRecoilState } from 'recoil';
 
+// input창 3자리 자동 콤마 삽입
+const inputPriceFormat = (str) => {
+  const comma = (str) => {
+    str = String(str);
+    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+  };
+  const uncomma = (str) => {
+    str = String(str);
+    return str.replace(/[^\d]+/g, '');
+  };
+  return comma(uncomma(str));
+};
+
 function Step3() {
   const [_wishPrice, setWishPrice] = useRecoilState(wishPrice);
+  const [price, setPrice] = useState();
 
   const handlePrice = (e) => {
     const newPrice = Number(e.target.value);
-    // setPriceState(newPrice.toLocaleString());
     setWishPrice(newPrice);
   };
 
@@ -28,7 +41,13 @@ function Step3() {
 
           <InputContainer>
             <p>₩</p>
-            <InputBox type='number' onChange={(e) => handlePrice(e)} value={_wishPrice}></InputBox>
+            <InputBox
+              type='text'
+              value={price}
+              onChange={(e) => {
+                setPrice(inputPriceFormat(e.target.value));
+              }}
+            ></InputBox>
           </InputContainer>
         </Main>
         <StepView></StepView>
