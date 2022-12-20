@@ -26,12 +26,17 @@ function Step3() {
   const [price, setPrice] = useState();
 
   const handlePrice = (e) => {
-    const newPrice = e.target.value.split(',').reduce((curr, acc) => curr + acc, '');
+    let currentData = e.target.value;
+    let checkNumber = currentData.charCodeAt([currentData.length - 1]);
+    if (checkNumber < 48 || checkNumber > 57) return;
+
+    const newPrice = currentData.split(',').reduce((curr, acc) => curr + acc, '');
     if (newPrice[0] === '0' || newPrice > 9999999999) {
       alert('금액 범위는 1~9,999,999,999원입니다!');
     } else {
       setPrice(inputPriceFormat(e.target.value));
-      setWishPrice(newPrice);
+      setWishPrice(Number(newPrice));
+      console.log(_wishPrice);
     }
   };
 
