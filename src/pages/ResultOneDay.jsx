@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import CopyToClipboard from 'react-copy-to-clipboard';
-import Union from '../assets/image/Union.png';
-import presentBox from '../assets/image/presentbox.png';
+import hotdog from '../assets/image/hotdog.svg';
 import ResultSanta from '../assets/image/ResultSanta.svg';
 import resultContainer1 from '../assets/image/resultContainer1.png';
 import resultContainer2 from '../assets/image/resultContainer2.png';
@@ -19,18 +17,14 @@ import { wishPrice, wishItem, likeFood } from 'atoms/atom';
 //dayjs format
 
 export default function Result() {
-  // const [_wishDate, setWishDate] = useRecoilState(wishDate);
-  const [_wishItem, setWishItem] = useRecoilState(wishItem);
-  const [_wishPrice, setWishPrice] = useRecoilState(wishPrice);
-  const [_likeFood, setLikeFood] = useRecoilState(likeFood);
+  // const [_wishItem, setWishItem] = useRecoilState(wishItem);
+  // const [_wishPrice, setWishPrice] = useRecoilState(wishPrice);
+  // const [_likeFood, setLikeFood] = useRecoilState(likeFood);
 
-  const product = _wishItem;
-  // const year = dayjs(_wishDate).year();
-  // const month = dayjs(_wishDate).month() + 1;
-  // const date = dayjs(_wishDate).date();
-  const day = 1;
-  const foodName = _likeFood;
-  const foodNum = 1;
+  // const product = _wishItem;
+  // const day = 1;
+  // const foodName = _likeFood;
+  // const foodNum = 1;
 
   const food1 = '붕어빵';
   const food2 = '스벅 아아';
