@@ -1,19 +1,19 @@
 import nextIcon from 'assets/icon/nextIcon.png';
 import prevIcon from 'assets/icon/prevIcon.png';
 import bigBalloon from 'assets/image/big_balloon.svg';
-import boonguhppang from 'assets/image/boonguhppang.svg';
-import burger from 'assets/image/burger.svg';
-import chicken from 'assets/image/chicken.svg';
-import coffee from 'assets/image/coffee.svg';
-import gimbap from 'assets/image/gimbap.svg';
-import gookbap from 'assets/image/gookbap.svg';
-import hotdog from 'assets/image/hotdog.svg';
+import boonguhppang from 'assets/image/boonguhppang.png';
+import burger from 'assets/image/burger.png';
+import chicken from 'assets/image/chicken.png';
+import coffee from 'assets/image/coffee.png';
+import gimbap from 'assets/image/gimbap.png';
+import gookbap from 'assets/image/gookbap.png';
+import hotdog from 'assets/image/hotdog.png';
 import logo from 'assets/image/logo.svg';
 import optionBalloon from 'assets/image/option_balloon.png';
-import optionBalloonRed from 'assets/image/option_balloon_red.svg';
-import pizza from 'assets/image/pizza.svg';
-import ramen from 'assets/image/ramen.svg';
-import ttheokbokki from 'assets/image/tteokbokki.svg';
+import optionBalloonRed from 'assets/image/option_balloon_red.png';
+import pizza from 'assets/image/pizza.png';
+import ramen from 'assets/image/ramen.png';
+import ttheokbokki from 'assets/image/tteokbokki.png';
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import styled, { css } from 'styled-components';
@@ -59,9 +59,9 @@ function Step4() {
       <Step4Background>
         <Logo src={logo} />
         <Question>
-          너가 가장
+          너의 산타가 되어줄 그 사람...
           <br />
-          애정하는 음식이...뭐였지?
+          무슨 음식을 가~장 좋아해?
         </Question>
         <OptionArea>
           {foodList.map((foodItem, index) => (
@@ -148,19 +148,22 @@ const OptionArea = styled.div`
 `;
 
 const OptionBackground = styled.div`
-  width: 14rem;
-  height: 16.5rem;
+  width: 13.6rem;
+  height: 16.1rem;
   cursor: pointer;
 
   ${({ idx, selected }) =>
     idx === selected &&
     css`
       background-image: url(${optionBalloonRed});
+      background-size: 13.6rem 16.1rem;
+      color: #ee5959;
     `}
   ${({ idx, selected }) =>
     idx !== selected &&
     css`
       background-image: url(${optionBalloon});
+      background-size: 13.6rem 16.1rem;
     `}
     /* background-color: green; */
   /* background-image: url(${optionBalloon}); */

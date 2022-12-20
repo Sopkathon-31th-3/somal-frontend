@@ -1,4 +1,4 @@
-import santa from 'assets/image/santa.svg';
+import santa from 'assets/image/santa.png';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
@@ -67,5 +67,10 @@ const StLoading = styled.div`
 
   & > p {
     height: 1.8rem;
+  }
+
+  & > img {
+    width: 17.2rem;
+    height: 17.2rem;
   }
 `;
