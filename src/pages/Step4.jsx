@@ -34,16 +34,16 @@ function Step4() {
   };
 
   const foodList = [
-    { src: chicken, name: '뿌링클', price: 22000 },
-    { src: boonguhppang, name: '붕어빵', price: 500 },
-    { src: coffee, name: '스벅 아아', price: 4500 },
-    { src: gookbap, name: '순대 국밥', price: 9000 },
-    { src: burger, name: '빅맥세트', price: 7500 },
-    { src: ttheokbokki, name: '엽기 떡볶이', price: 14000 },
-    { src: gimbap, name: '김가네 김밥', price: 3900 },
-    { src: hotdog, name: '핫도그', price: 1800 },
-    { src: pizza, name: '피자스쿨', price: 10900 },
-    { src: ramen, name: '신라면', price: 820 },
+    { src: chicken, name: '뿌링클', price: '22,000' },
+    { src: boonguhppang, name: '붕어빵', price: '500' },
+    { src: coffee, name: '스벅 아아', price: '4,500' },
+    { src: gookbap, name: '순대 국밥', price: '9,000' },
+    { src: burger, name: '빅맥세트', price: '7,500' },
+    { src: ttheokbokki, name: '엽기 떡볶이', price: '14,000' },
+    { src: gimbap, name: '김가네 김밥', price: '3,900' },
+    { src: hotdog, name: '핫도그', price: '1,800' },
+    { src: pizza, name: '피자스쿨', price: '10,900' },
+    { src: ramen, name: '신라면', price: '820' },
   ];
   const location = useLocation();
   const [_likeFood, setLikeFood] = useRecoilState(likeFood);
