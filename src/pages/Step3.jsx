@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react';
+import { React, useState } from 'react';
 import styled from 'styled-components';
 import container from '../assets/image/container.png';
 import StepButton from 'components/common/StepButton';
@@ -27,6 +27,8 @@ function Step3() {
 
   const handlePrice = (e) => {
     let currentData = e.target.value;
+
+    // 숫자만 입력 가능
     let checkNumber = currentData.charCodeAt([currentData.length - 1]);
     if (checkNumber < 48 || checkNumber > 57) return;
 
@@ -36,7 +38,6 @@ function Step3() {
     } else {
       setPrice(inputPriceFormat(e.target.value));
       setWishPrice(Number(newPrice));
-      console.log(_wishPrice);
     }
   };
 
@@ -44,7 +45,7 @@ function Step3() {
     <StyledRoot>
       <Container>
         <Main>
-          <Logo src={logo} />
+          <Logo src={logo} alt='로고' />
           <Question>
             근데 그거...
             <br /> 얼마짜리더라?
