@@ -10,7 +10,9 @@ import gookbap from 'assets/image/gookbap.png';
 import hotdog from 'assets/image/hotdog.png';
 import logo from 'assets/image/logo.svg';
 import optionBalloon from 'assets/image/option_balloon.png';
+import optionBalloonLeft from 'assets/image/optionBalloonLeft.png';
 import optionBalloonRed from 'assets/image/option_balloon_red.png';
+import optionBalloonRedRight from 'assets/image/optionBalloonRight.png';
 import pizza from 'assets/image/pizza.png';
 import ramen from 'assets/image/ramen.png';
 import ttheokbokki from 'assets/image/tteokbokki.png';
@@ -153,15 +155,32 @@ const OptionBackground = styled.div`
 
   ${({ idx, selected }) =>
     idx === selected &&
+    idx % 2 === 0 &&
     css`
       background-image: url(${optionBalloonRed});
       background-size: 13.6rem 16.1rem;
       color: #ee5959;
     `}
   ${({ idx, selected }) =>
+    idx === selected &&
+    idx % 2 !== 0 &&
+    css`
+      background-image: url(${optionBalloonRedRight});
+      background-size: 13.6rem 16.1rem;
+      color: #ee5959;
+    `}
+  ${({ idx, selected }) =>
     idx !== selected &&
+    idx % 2 !== 0 &&
     css`
       background-image: url(${optionBalloon});
+      background-size: 13.6rem 16.1rem;
+    `}
+    ${({ idx, selected }) =>
+    idx !== selected &&
+    idx % 2 === 0 &&
+    css`
+      background-image: url(${optionBalloonLeft});
       background-size: 13.6rem 16.1rem;
     `}
     /* background-color: green; */
