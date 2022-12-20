@@ -25,7 +25,7 @@ function Step2() {
           <InputBox onChange={(e) => changeItem(e)}></InputBox>
         </Main>
         <StepView></StepView>
-        <StepButton></StepButton>
+        <StepButton data={_wishItem}></StepButton>
       </Container>
     </StyledRoot>
   );

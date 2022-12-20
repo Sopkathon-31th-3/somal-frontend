@@ -32,7 +32,7 @@ function Step3() {
           </InputContainer>
         </Main>
         <StepView></StepView>
-        <StepButton></StepButton>
+        <StepButton data={_wishPrice}></StepButton>
       </Container>
     </StyledRoot>
   );

@@ -15,12 +15,22 @@ import pizza from 'assets/image/pizza.svg';
 import ramen from 'assets/image/ramen.svg';
 import ttheokbokki from 'assets/image/tteokbokki.svg';
 import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import { likeFood } from 'atoms/atom';
 import { useRecoilState } from 'recoil';
 
 function Step4() {
+  const navigate = useNavigate();
+
+  const onClickNext = () => {
+    if (_likeFood == '' || _likeFood == undefined) {
+      alert('음식을 선택해주세요!');
+    } else {
+      navigate(`/loading`);
+    }
+  };
+
   const foodList = [
     { src: chicken, name: '뿌링클', price: 22000 },
     { src: boonguhppang, name: '붕어빵', price: 500 },
@@ -81,12 +91,10 @@ function Step4() {
               <p>이전</p>
             </PrevButtonContainer>
           </Link>
-          <Link to='/loading'>
-            <NextButtonContainer>
-              <p>다음</p>
-              <img src={nextIcon} alt='nextBtn'></img>
-            </NextButtonContainer>
-          </Link>
+          <NextButtonContainer onClick={onClickNext}>
+            <p>다음</p>
+            <img src={nextIcon} alt='nextBtn'></img>
+          </NextButtonContainer>
         </ButtonContainer>
       </Step4Background>
     </StyledRoot>

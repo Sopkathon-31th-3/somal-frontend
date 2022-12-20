@@ -25,7 +25,7 @@ function Step1() {
           <InputBox onChange={(e) => changeName(e)}></InputBox>
         </Main>
         <StepView></StepView>
-        <StepButton></StepButton>
+        <StepButton data={_userName}></StepButton>
       </Container>
     </StyledRoot>
   );
