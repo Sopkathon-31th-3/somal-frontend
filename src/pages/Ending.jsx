@@ -1,10 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
 import CopyToClipboard from 'react-copy-to-clipboard';
-import sowonSanta from '../assets/image/sowonSanta.svg';
+import sowonSanta from '../assets/image/sowonSanta.png';
 import { Link } from 'react-router-dom';
+import { wishPrice, wishItem, likeFood, userName } from 'atoms/atom';
+import { useRecoilState } from 'recoil';
 
 function Ending() {
+  const [_userName, setUserName] = useRecoilState(userName);
+  const [_wishItem, setWishItem] = useRecoilState(wishItem);
+  const [_wishPrice, setWishPrice] = useRecoilState(wishPrice);
+  const [_likeFood, setLikeFood] = useRecoilState(likeFood);
+
+  function ResetRecoil() {
+    setUserName('');
+    setWishItem('');
+    setWishPrice('');
+    setLikeFood('');
+  }
+
   return (
     <>
       <StEndingcontainer>
@@ -14,7 +28,7 @@ function Ending() {
       </StEndingcontainer>
       <StShare>
         <Link to='/'>
-          <button>처음으로</button>
+          <button onClick={ResetRecoil}>처음으로</button>
         </Link>
         <CopyToClipboard
           text={window.location.host}

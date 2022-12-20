@@ -73,4 +73,9 @@ const StLoading = styled.div`
   & > p {
     height: 1.8rem;
   }
+
+  & > img {
+    width: 17.2rem;
+    height: 17.2rem;
+  }
 `;

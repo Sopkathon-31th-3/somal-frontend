@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import hotdog from '../assets/image/hotdog.svg';
+import hotdog from '../assets/image/hotdog.png';
 import ResultSanta from '../assets/image/ResultSanta.svg';
 import resultContainer1 from '../assets/image/resultContainer1.png';
 import resultContainer2 from '../assets/image/resultContainer2.png';
