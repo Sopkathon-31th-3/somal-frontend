@@ -4,7 +4,6 @@ import nextIcon from '../../assets/icon/nextIcon.png';
 import prevIcon from '../../assets/icon/prevIcon.png';
 
 function StepButton({ data }) {
-  console.log(data);
   const location = useLocation();
   const navigate = useNavigate();
   const stepNum = Number(location.pathname.slice(-1));
