@@ -3,33 +3,26 @@ import styled from 'styled-components';
 import container from '../assets/image/container.png';
 import StepButton from 'components/common/StepButton';
 import StepView from 'components/common/StepView';
-import { wishPrice } from '../atoms/atom';
+import { wishItem } from 'atoms/atom';
 import logo from '../assets/image/logo.svg';
 import { useRecoilState } from 'recoil';
 
 function Step2() {
-  const [_wishPrice, setWishPrice] = useRecoilState(wishPrice);
+  const [_wishItem, setWishItem] = useRecoilState(wishItem);
 
-  const handlePrice = (e) => {
-    const newPrice = Number(e.target.value);
-    // setPriceState(newPrice.toLocaleString());
-    setWishPrice(newPrice);
+  const changeItem = (e) => {
+    setWishItem(e.target.value);
   };
-
   return (
     <StyledRoot>
       <Container>
         <Main>
           <Logo src={logo} />
           <Question>
-            근데 그거...
-            <br /> 얼마짜리더라?
+            크리스마스에 가~장
+            <br /> 갖고 싶은게 뭐야?
           </Question>
-
-          <InputContainer>
-            <p>₩</p>
-            <InputBox type='number' onChange={(e) => handlePrice(e)} value={_wishPrice}></InputBox>
-          </InputContainer>
+          <InputBox onChange={(e) => changeItem(e)}></InputBox>
         </Main>
         <StepView></StepView>
         <StepButton></StepButton>
@@ -66,11 +59,6 @@ const Main = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-
-  span {
-    flex: none;
-    position: absolute;
-  }
 `;
 
 const Title = styled.h1`
@@ -82,29 +70,15 @@ const Question = styled.p`
   font-size: 1.8rem;
   text-align: center;
 `;
-const InputContainer = styled.div`
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 24.4rem;
-  border-bottom: 0.2rem solid black;
-  font-size: 1.8rem;
-  padding: 0 0 1rem 1rem;
-
-  p {
-    font-size: 1.8rem;
-  }
-`;
-
 const InputBox = styled.input`
   outline: none;
   border: none;
-  width: 100%;
+  width: 24.4rem;
+  border-bottom: 0.2rem solid black;
   font-size: 1.8rem;
   font-family: Galmuri11;
-  /* text-align: center; */
-  padding-left: 2rem;
+  text-align: center;
+  padding-bottom: 1rem;
 `;
 
 const Logo = styled.img`

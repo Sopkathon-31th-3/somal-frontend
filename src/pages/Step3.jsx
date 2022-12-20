@@ -3,52 +3,33 @@ import styled from 'styled-components';
 import container from '../assets/image/container.png';
 import StepButton from 'components/common/StepButton';
 import StepView from 'components/common/StepView';
-import { useRecoilState } from 'recoil';
+import { wishPrice } from '../atoms/atom';
 import logo from '../assets/image/logo.svg';
-import { wishDate } from 'atoms/atom';
+import { useRecoilState } from 'recoil';
 
 function Step3() {
-  const [_wishDate, setWishDate] = useRecoilState(wishDate);
-  const test = (e) => {
-    // if (today > e.target.value) {
-    //   alert('잘못된 날짜예여');
-    //   console.log('냐냐');
-    // } else {
-    setWishDate(e.target.value);
-    console.log(e.target.value);
+  const [_wishPrice, setWishPrice] = useRecoilState(wishPrice);
 
-    // }
+  const handlePrice = (e) => {
+    const newPrice = Number(e.target.value);
+    // setPriceState(newPrice.toLocaleString());
+    setWishPrice(newPrice);
   };
 
-  const getYmd10 = () => {
-    //yyyy-mm-dd 포맷 날짜 생성
-    let d = new Date();
-    return (
-      d.getFullYear() +
-      '-' +
-      (d.getMonth() + 1 > 9 ? (d.getMonth() + 1).toString() : '0' + (d.getMonth() + 1)) +
-      '-' +
-      (d.getDate() > 9 ? d.getDate().toString() : '0' + d.getDate().toString())
-    );
-  };
-
-  const today = getYmd10();
   return (
     <StyledRoot>
       <Container>
         <Main>
           <Logo src={logo} />
           <Question>
-            그거...
-            <br /> 언제쯤 받고 싶어?
+            근데 그거...
+            <br /> 얼마짜리더라?
           </Question>
-          <InputBox
-            type='date'
-            onChange={(e) => {
-              test(e);
-            }}
-            min={today}
-          ></InputBox>
+
+          <InputContainer>
+            <p>₩</p>
+            <InputBox type='number' onChange={(e) => handlePrice(e)} value={_wishPrice}></InputBox>
+          </InputContainer>
         </Main>
         <StepView></StepView>
         <StepButton></StepButton>
@@ -85,6 +66,11 @@ const Main = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+
+  span {
+    flex: none;
+    position: absolute;
+  }
 `;
 
 const Title = styled.h1`
@@ -96,15 +82,29 @@ const Question = styled.p`
   font-size: 1.8rem;
   text-align: center;
 `;
-const InputBox = styled.input`
-  outline: none;
+const InputContainer = styled.div`
   border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 24.4rem;
   border-bottom: 0.2rem solid black;
   font-size: 1.8rem;
+  padding: 0 0 1rem 1rem;
+
+  p {
+    font-size: 1.8rem;
+  }
+`;
+
+const InputBox = styled.input`
+  outline: none;
+  border: none;
+  width: 100%;
+  font-size: 1.8rem;
   font-family: Galmuri11;
-  text-align: center;
-  padding-bottom: 1rem;
+  /* text-align: center; */
+  padding-left: 2rem;
 `;
 
 const Logo = styled.img`

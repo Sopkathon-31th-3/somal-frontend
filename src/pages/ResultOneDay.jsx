@@ -7,20 +7,20 @@ import ResultSanta from '../assets/image/ResultSanta.svg';
 import NextIcon from '../assets/icon/NextIcon.svg';
 import { Link } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import { wishDate, wishPrice, wishItem, likeFood } from 'atoms/atom';
+import { wishPrice, wishItem, likeFood } from 'atoms/atom';
 //dayjs format
 import dayjs from 'dayjs';
 
 export default function Result() {
-  const [_wishDate, setWishDate] = useRecoilState(wishDate);
+  // const [_wishDate, setWishDate] = useRecoilState(wishDate);
   const [_wishItem, setWishItem] = useRecoilState(wishItem);
   const [_wishPrice, setWishPrice] = useRecoilState(wishPrice);
   const [_likeFood, setLikeFood] = useRecoilState(likeFood);
 
   const product = _wishItem;
-  const year = dayjs(_wishDate).year();
-  const month = dayjs(_wishDate).month() + 1;
-  const date = dayjs(_wishDate).date();
+  // const year = dayjs(_wishDate).year();
+  // const month = dayjs(_wishDate).month() + 1;
+  // const date = dayjs(_wishDate).date();
   const day = 1;
   const foodName = _likeFood;
   const foodNum = 1;
@@ -39,9 +39,9 @@ export default function Result() {
 
   //wishItem, wishPrice, wishDate
 
-  console.log(_wishDate);
-  console.log(_wishItem);
-  console.log(dayjs(_wishDate).year());
+  // console.log(_wishDate);
+  // console.log(_wishItem);
+  // console.log(dayjs(_wishDate).year());
 
   return (
     <div>
@@ -64,9 +64,9 @@ export default function Result() {
               <Text>고민은 배송만 늦출 뿐ㅋ</Text>
               <Blank></Blank>
               <Text>그냥...</Text>
-              <Text>
+              {/* <Text>
                 <Bolded>{year}</Bolded>년 <Bolded>{month}</Bolded>월 <Bolded>{date}</Bolded>일까지
-              </Text>
+              </Text> */}
               {/*recoil*/}
               <Text>
                 하루에

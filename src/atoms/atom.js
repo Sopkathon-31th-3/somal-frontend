@@ -8,8 +8,8 @@ const wishPrice = atom({
   key: 'wishPrice',
   default: '',
 });
-const wishDate = atom({
-  key: 'wishDate',
+const userName = atom({
+  key: 'userName',
   default: '',
 });
 const likeFood = atom({
@@ -17,4 +17,4 @@ const likeFood = atom({
   default: '',
 });
 
-export { wishItem, wishPrice, wishDate, likeFood };
+export { wishItem, wishPrice, userName, likeFood };

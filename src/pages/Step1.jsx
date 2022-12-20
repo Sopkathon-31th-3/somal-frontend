@@ -3,15 +3,15 @@ import styled from 'styled-components';
 import container from '../assets/image/container.png';
 import StepButton from 'components/common/StepButton';
 import StepView from 'components/common/StepView';
-import { wishItem } from 'atoms/atom';
-import logo from '../assets/image/logo.svg';
 import { useRecoilState } from 'recoil';
+import logo from '../assets/image/logo.svg';
+import { userName } from 'atoms/atom';
 
 function Step1() {
-  const [_wishItem, setWishItem] = useRecoilState(wishItem);
+  const [_userName, setUserName] = useRecoilState(userName);
 
-  const changeItem = (e) => {
-    setWishItem(e.target.value);
+  const changeName = (e) => {
+    setUserName(e.target.value);
   };
   return (
     <StyledRoot>
@@ -19,10 +19,10 @@ function Step1() {
         <Main>
           <Logo src={logo} />
           <Question>
-            지금 가~장
-            <br /> 갖고 싶은게 뭐야?
+            너의 이름을
+            <br /> 알려줘~!
           </Question>
-          <InputBox onChange={(e) => changeItem(e)}></InputBox>
+          <InputBox onChange={(e) => changeName(e)}></InputBox>
         </Main>
         <StepView></StepView>
         <StepButton></StepButton>

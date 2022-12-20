@@ -47,6 +47,7 @@ const PrevButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 
   & > p {
     font-size: 1.8rem;
@@ -58,6 +59,7 @@ const NextButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 
   & > p {
     font-size: 1.8rem;
