@@ -8,6 +8,9 @@ import logo from '../assets/image/logo.svg';
 import { useRecoilState } from 'recoil';
 
 function Step2() {
+  window.scrollTo({
+    top: 0,
+  });
   const [_wishItem, setWishItem] = useRecoilState(wishItem);
 
   const changeItem = (e) => {
