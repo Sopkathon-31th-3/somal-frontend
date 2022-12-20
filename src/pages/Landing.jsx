@@ -28,6 +28,7 @@ export default Landing;
 const Stcontainer = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   padding-top: 9.8rem;
 
   & > img {
@@ -56,7 +57,7 @@ const Santa = styled.img`
 `;
 
 const Present = styled.img`
-  width: 45rem;
+  width: 100%;
 `;
 
 const StStart = styled.div`
