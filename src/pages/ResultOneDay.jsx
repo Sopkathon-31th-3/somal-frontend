@@ -20,6 +20,7 @@ export default function Result() {
   const userNameValue = useRecoilValue(userName);
   const wishItemValue = useRecoilValue(wishItem);
 
+  const [foodSelectedResult, setFoodSelectedResult] = useState('');
   const [food1, setFood1] = useState('');
   const [food2, setFood2] = useState('');
   const [food3, setFood3] = useState('');
@@ -30,7 +31,7 @@ export default function Result() {
   //console.log(result.then((res) => res.data.data[0])); //왜 then..?
 
   useEffect(() => {
-    console.log(likeFoodValue);
+    //하위 5개 음식 데이터
     const foodList = () => {
       switch (likeFoodValue) {
         case '뿌링클': {
@@ -69,6 +70,45 @@ export default function Result() {
         }
       }
     };
+    //선택한 음식 데이터
+    const foodSelectedIdx = () => {
+      switch (likeFoodValue) {
+        case '뿌링클': {
+          return 0;
+        }
+        case '붕어빵': {
+          return 1;
+        }
+        case '스벅 아아': {
+          return 2;
+        }
+        case '순대 국밥': {
+          return 3;
+        }
+        case '빅맥세트': {
+          return 4;
+        }
+        case '엽기 떡볶이': {
+          return 5;
+        }
+        case '김가네 김밥': {
+          return 6;
+        }
+        case '명랑 핫도그': {
+          return 7;
+        }
+        case '피자스쿨': {
+          return 8;
+        }
+        case '신라면': {
+          return 9;
+        }
+
+        default: {
+          return;
+        }
+      }
+    };
     axios
       .post('http://54.180.113.169:3000/result', {
         foodName: likeFoodValue,
@@ -81,6 +121,7 @@ export default function Result() {
         setFood1(resultArr[foodList()[0]]);
         setFood4(resultArr[foodList()[3]]);
         setFood5(resultArr[foodList()[4]]); // 이걸로 잘 되면 foodList 에 문제가 있다는 것.
+        setFoodSelectedResult(resultArr[[foodSelectedIdx()]]);
       })
       .catch(function (error) {
         console.log(error);
@@ -130,7 +171,11 @@ export default function Result() {
           <Text>선물 주기 생각보다 쉽다~🎁</Text>
           <Blank></Blank>
           <Text>
-            <BoldRed>뿌링클 200개</BoldRed>만
+            <BoldRed>
+              {likeFoodValue} {foodSelectedResult.foodNum}
+              {foodSelectedResult.unit}
+            </BoldRed>
+            만
           </Text>
           <Text> 포기하면 돼ㅋ</Text>
           <Text>{checkName(userNameValue, 0)} 향한 애정,</Text>
