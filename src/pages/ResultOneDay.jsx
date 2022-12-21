@@ -27,9 +27,6 @@ export default function Result() {
   const [food4, setFood4] = useState('');
   const [food5, setFood5] = useState('');
 
-  //const result = postWishData({ foodName: likeFoodValue, wishItemPrice: wishPriceValue });
-  //console.log(result.then((res) => res.data.data[0])); //왜 then..?
-
   useEffect(() => {
     //하위 5개 음식 데이터
     const foodList = () => {
@@ -120,7 +117,7 @@ export default function Result() {
         setFood3(resultArr[foodList()[2]]);
         setFood1(resultArr[foodList()[0]]);
         setFood4(resultArr[foodList()[3]]);
-        setFood5(resultArr[foodList()[4]]); // 이걸로 잘 되면 foodList 에 문제가 있다는 것.
+        setFood5(resultArr[foodList()[4]]);
         setFoodSelectedResult(resultArr[[foodSelectedIdx()]]);
       })
       .catch(function (error) {
@@ -129,9 +126,7 @@ export default function Result() {
   }, [likeFoodValue, wishPriceValue]);
 
   //foodList는 매번 업데이트될 필요가 있지. 얘의 역할은 10개 중에서 5개를 뭘 뽑을지 그 번호를 저장하는 거고
-
-  //console.log(food1);
-  //console.log(food2);
+  //주석 귀엽다 현수야 ><
 
   function checkName(name, num) {
     const charCode = name.charCodeAt(name.length - 1);
