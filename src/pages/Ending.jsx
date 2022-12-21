@@ -4,13 +4,13 @@ import CopyToClipboard from 'react-copy-to-clipboard';
 import sowonSanta from '../assets/image/sowonSanta.png';
 import { Link } from 'react-router-dom';
 import { wishPrice, wishItem, likeFood, userName } from 'atoms/atom';
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 
 function Ending() {
-  const [_userName, setUserName] = useRecoilState(userName);
-  const [_wishItem, setWishItem] = useRecoilState(wishItem);
-  const [_wishPrice, setWishPrice] = useRecoilState(wishPrice);
-  const [_likeFood, setLikeFood] = useRecoilState(likeFood);
+  const setUserName = useSetRecoilState(userName);
+  const setWishItem = useSetRecoilState(wishItem);
+  const setWishPrice = useSetRecoilState(wishPrice);
+  const setLikeFood = useSetRecoilState(likeFood);
 
   function ResetRecoil() {
     setUserName('');
@@ -31,7 +31,7 @@ function Ending() {
           <button onClick={ResetRecoil}>처음으로</button>
         </Link>
         <CopyToClipboard
-          text={`https://somal-frontend.vercel.app/`}
+          text={`https://makeawish.vercel.app/`}
           onCopy={() => alert('링크가 클립보드에 복사되었어요!')}
         >
           <button>공유하기</button>
