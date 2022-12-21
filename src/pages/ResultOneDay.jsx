@@ -1,42 +1,97 @@
 import React from 'react';
+import { useEffect } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
-import hotdog from '../assets/image/hotdog.png';
-import ResultSanta from '../assets/image/ResultSanta.svg';
 import resultContainer1 from '../assets/image/resultContainer1.png';
-import resultContainer2 from '../assets/image/resultContainer2.png';
 import resultContainer2Test from '../assets/image/resultContainer2_test.png';
 
 import foods from '../assets/image/foods.png';
 import scrollIcon from '../assets/image/scrollIcon.png';
 import endingIcon from '../assets/image/endingIcon.png';
 
-import NextIcon from '../assets/icon/NextIcon.svg';
 import { Link } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
-import { wishPrice, wishItem, likeFood } from 'atoms/atom';
-//dayjs format
+import { postWishData } from 'lib/api';
+import { useRecoilValue } from 'recoil';
+import { likeFood, wishPrice } from 'atoms/atom';
+import { useState } from 'react';
 
 export default function Result() {
-  // const [_wishItem, setWishItem] = useRecoilState(wishItem);
-  // const [_wishPrice, setWishPrice] = useRecoilState(wishPrice);
-  // const [_likeFood, setLikeFood] = useRecoilState(likeFood);
+  const likeFoodValue = useRecoilValue(likeFood);
+  const wishPriceValue = useRecoilValue(wishPrice);
 
-  // const product = _wishItem;
-  // const day = 1;
-  // const foodName = _likeFood;
-  // const foodNum = 1;
+  const [food1, setFood1] = useState('');
+  const [food2, setFood2] = useState('');
+  const [food3, setFood3] = useState('');
+  const [food4, setFood4] = useState('');
+  const [food5, setFood5] = useState('');
 
-  const food1 = '붕어빵';
-  const food2 = '스벅 아아';
-  const food3 = '빅맥 세트';
-  const food4 = '엽기 떡볶이';
-  const food5 = '신라면';
+  const [foodList, setFoodList] = useState([]);
 
+  //const result = postWishData({ foodName: likeFoodValue, wishItemPrice: wishPriceValue });
+  //console.log(result.then((res) => res.data.data[0])); //왜 then..?
+
+  useEffect(() => {
+    switch (likeFoodValue) {
+      case '뿌링클':
+        setFoodList([1, 2, 5, 6, 9]);
+        break;
+      case '붕어빵':
+        setFoodList([0, 3, 6, 7, 8]);
+        break;
+      case '스벅 아아':
+        setFoodList([1, 5, 7, 8, 9]);
+        break;
+      case '순대국밥':
+        setFoodList([0, 1, 2, 4, 5]);
+        break;
+      case '빅맥 세트':
+        setFoodList([2, 3, 5, 8, 9]);
+        break;
+      case '엽기떡볶이':
+        setFoodList([2, 3, 4, 7, 8]);
+        break;
+      case '김가네 김밥':
+        setFoodList([0, 1, 3, 5, 9]);
+        break;
+      case '명랑 핫도그':
+        setFoodList([1, 2, 4, 5, 6]);
+        break;
+      case '피자스쿨':
+        setFoodList([0, 3, 5, 7, 9]);
+        break;
+      case '신라면':
+        setFoodList([0, 1, 2, 4, 6]);
+        break;
+      default:
+        break;
+    }
+
+    axios
+      .post('http://54.180.113.169:3000/result', {
+        foodName: likeFoodValue,
+        wishItemPrice: wishPriceValue,
+      })
+      .then(function (response) {
+        setFood1(response.data.data[foodList[0]].foodName);
+        setFood2(response.data.data[foodList[1]].foodName);
+        setFood3(response.data.data[foodList[2]].foodName);
+        setFood4(response.data.data[foodList[3]].foodName);
+        setFood5(response.data.data[foodList[4]].foodName); // 이걸로 잘 되면 foodList 에 문제가 있다는 것.
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, [likeFoodValue, wishPriceValue]);
+
+  //foodList는 매번 업데이트될 필요가 있지. 얘의 역할은 10개 중에서 5개를 뭘 뽑을지 그 번호를 저장하는 거고
   const foodNum1 = 'n';
   const foodNum2 = 'n';
   const foodNum3 = 'n';
   const foodNum4 = 'n';
   const foodNum5 = 'n';
+
+  //console.log(food1);
+  //console.log(food2);
 
   function checkName(name, num) {
     const charCode = name.charCodeAt(name.length - 1);
@@ -87,19 +142,19 @@ export default function Result() {
           <p> 만약 어렵다면~</p>
           <Blank></Blank>
           <p>
-            {food1} {foodNum1}마리 먹지 말든지 ㅋㅎ ~
+            {food1} {foodNum1}개 먹지 말든지 ㅋㅎ ~
           </p>
           <p>
-            {food2} {foodNum2}잔 먹지 말든지 ㅋㅋ ~
+            {food2} {foodNum2}마리 먹지 말든지 ㅋㅋ ~
           </p>
           <p>
-            {food3} {foodNum3}개 먹지 말든지 ㅎㅋ ~
+            {food3} {foodNum3}잔 먹지 말든지 ㅎㅋ ~
           </p>
           <p>
-            {food4} {foodNum4}개 먹지 말든지 ㅋㅋ ~
+            {food4} {foodNum4}봉지 먹지 말든지 ㅋㅋ ~
           </p>
           <p>
-            {food5} {foodNum5}봉지 먹지 말든지 ㅋㅋㅋ ~
+            {food5} {foodNum5}개 먹지 말든지 ㅋㅋㅋ ~
           </p>
         </DailyFoodWrapper>
         <ScrollIcon src={scrollIcon} alt='scrollIcon'></ScrollIcon>
