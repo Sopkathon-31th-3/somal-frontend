@@ -15,6 +15,20 @@ import { likeFood, wishPrice, userName, wishItem } from 'atoms/atom';
 import { useState } from 'react';
 
 export default function Result() {
+  const inputPriceFormat = (str) => {
+    str = String(str);
+    str.replace(/(^0+)/, '');
+    const comma = (str) => {
+      str = String(str);
+      return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+    };
+    const uncomma = (str) => {
+      str = String(str);
+      return str.replace(/[^\d]+/g, '');
+    };
+    return comma(uncomma(str));
+  };
+
   const likeFoodValue = useRecoilValue(likeFood);
   const wishPriceValue = useRecoilValue(wishPrice);
   const userNameValue = useRecoilValue(userName);
@@ -178,7 +192,7 @@ export default function Result() {
           <Blank></Blank>
           <Text>
             <BoldRed>
-              {likeFoodValue} {foodSelectedResult.foodNum}
+              {likeFoodValue} {inputPriceFormat(foodSelectedResult.foodNum)}
               {foodSelectedResult.unit}
             </BoldRed>
             만
@@ -197,23 +211,23 @@ export default function Result() {
           <p> 만약 어렵다면~</p>
           <br />
           <p>
-            {food1.foodName} {food1.foodNum}
+            {food1.foodName} {inputPriceFormat(food1.foodNum)}
             {food1.unit} 먹지 말든지..~
           </p>
           <p>
-            {food2.foodName} {food2.foodNum}
+            {food2.foodName} {inputPriceFormat(food2.foodNum)}
             {food2.unit} 먹지 말든지..~
           </p>
           <p>
-            {food3.foodName} {food3.foodNum}
+            {food3.foodName} {inputPriceFormat(food3.foodNum)}
             {food3.unit} 먹지 말든지..~
           </p>
           <p>
-            {food4.foodName} {food4.foodNum}
+            {food4.foodName} {inputPriceFormat(food4.foodNum)}
             {food4.unit} 먹지 말든지..~
           </p>
           <p>
-            {food5.foodName} {food5.foodNum}
+            {food5.foodName} {inputPriceFormat(food5.foodNum)}
             {food5.unit} 먹지 말든지..~
           </p>
           <ScrollIcon src={scrollIcon} alt='scrollIcon'></ScrollIcon>
