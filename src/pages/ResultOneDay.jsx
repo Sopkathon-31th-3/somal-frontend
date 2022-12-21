@@ -183,13 +183,18 @@ export default function Result() {
             만
           </Text>
           <Text> 포기하면 돼ㅋ</Text>
+          <br />
+          <FoodPhoto src={foodSelectedResult.imageURL} alt='선택한 음식 사진'></FoodPhoto>
+          <br />
+          <br />
           <Text>{checkName(userNameValue, 0)} 향한 애정,</Text>
           <Text>그 정도는 되잖아~❤️?</Text>
-          <Blank></Blank>
+          <br />
+          <br />
         </TextWrapper>
         <DailyFoodWrapper>
           <p> 만약 어렵다면~</p>
-          <Blank></Blank>
+          <br />
           <p>
             {food1.foodName} {food1.foodNum}
             {food1.unit} 먹지 말든지..~
@@ -210,8 +215,8 @@ export default function Result() {
             {food5.foodName} {food5.foodNum}
             {food5.unit} 먹지 말든지..~
           </p>
+          <ScrollIcon src={scrollIcon} alt='scrollIcon'></ScrollIcon>
         </DailyFoodWrapper>
-        <ScrollIcon src={scrollIcon} alt='scrollIcon'></ScrollIcon>
       </Container1>
       <DescText>화면을 캡쳐해서 네 산타에게 보내봐!</DescText>
       <Container2>
@@ -237,14 +242,14 @@ const BoldRed = styled.span`
   font-weight: 700;
   font-family: Galmuri11, sans-serif;
   font-size: 1.8rem;
-  line-height: 3.3rem;
+  line-height: 2.7rem;
 `;
 
 const Bolded = styled.span`
   font-weight: 700;
   font-family: Galmuri11, sans-serif;
   font-size: 1.8rem;
-  line-height: 3.3rem;
+  line-height: 2.7rem;
 `;
 
 const Text = styled.p`
@@ -330,16 +335,19 @@ const DescText = styled.p`
   color: white;
 `;
 
-const ScrollIcon = styled.img``;
+const ScrollIcon = styled.img`
+  margin-top: 3.1rem;
+`;
 
 const Blank = styled.div`
-  height: 3.3rem;
+  height: 2.7rem;
 `;
 
 const TextWrapper = styled.div`
   /* width: 24.7rem; */
   width: 40rem;
   margin-top: 4.3rem;
+  text-align: center;
 `;
 
 const DailyFoodWrapper = styled.div`
@@ -349,7 +357,10 @@ const DailyFoodWrapper = styled.div`
   width: 26.45rem;
   height: 11.46rem;
   font-size: 1.2rem;
-  margin-top: 2.1rem;
-  margin-bottom: 5.4rem;
   line-height: 1.8rem;
+`;
+
+const FoodPhoto = styled.img`
+  width: 6.3rem;
+  height: 6.3rem;
 `;
