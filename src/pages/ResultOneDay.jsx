@@ -10,14 +10,15 @@ import scrollIcon from '../assets/image/scrollIcon.png';
 import endingIcon from '../assets/image/endingIcon.png';
 
 import { Link } from 'react-router-dom';
-import { postWishData } from 'lib/api';
 import { useRecoilValue } from 'recoil';
-import { likeFood, wishPrice } from 'atoms/atom';
+import { likeFood, wishPrice, userName, wishItem } from 'atoms/atom';
 import { useState } from 'react';
 
 export default function Result() {
   const likeFoodValue = useRecoilValue(likeFood);
   const wishPriceValue = useRecoilValue(wishPrice);
+  const userNameValue = useRecoilValue(userName);
+  const wishItemValue = useRecoilValue(wishItem);
 
   const [food1, setFood1] = useState('');
   const [food2, setFood2] = useState('');
@@ -25,58 +26,61 @@ export default function Result() {
   const [food4, setFood4] = useState('');
   const [food5, setFood5] = useState('');
 
-  const [foodList, setFoodList] = useState([]);
-
   //const result = postWishData({ foodName: likeFoodValue, wishItemPrice: wishPriceValue });
   //console.log(result.then((res) => res.data.data[0])); //왜 then..?
 
   useEffect(() => {
-    switch (likeFoodValue) {
-      case '뿌링클':
-        setFoodList([1, 2, 5, 6, 9]);
-        break;
-      case '붕어빵':
-        setFoodList([0, 3, 6, 7, 8]);
-        break;
-      case '스벅 아아':
-        setFoodList([1, 5, 7, 8, 9]);
-        break;
-      case '순대국밥':
-        setFoodList([0, 1, 2, 4, 5]);
-        break;
-      case '빅맥 세트':
-        setFoodList([2, 3, 5, 8, 9]);
-        break;
-      case '엽기떡볶이':
-        setFoodList([2, 3, 4, 7, 8]);
-        break;
-      case '김가네 김밥':
-        setFoodList([0, 1, 3, 5, 9]);
-        break;
-      case '명랑 핫도그':
-        setFoodList([1, 2, 4, 5, 6]);
-        break;
-      case '피자스쿨':
-        setFoodList([0, 3, 5, 7, 9]);
-        break;
-      case '신라면':
-        setFoodList([0, 1, 2, 4, 6]);
-        break;
-      default:
-        break;
-    }
+    console.log(likeFoodValue);
+    const foodList = () => {
+      switch (likeFoodValue) {
+        case '뿌링클': {
+          return [1, 2, 5, 6, 9];
+        }
+        case '붕어빵': {
+          return [0, 3, 6, 7, 8];
+        }
+        case '스벅 아아': {
+          return [1, 5, 7, 8, 9];
+        }
+        case '순대 국밥': {
+          return [0, 1, 2, 4, 5];
+        }
+        case '빅맥세트': {
+          return [2, 3, 5, 8, 9];
+        }
+        case '엽기 떡볶이': {
+          return [2, 3, 4, 7, 8];
+        }
+        case '김가네 김밥': {
+          return [0, 1, 3, 5, 9];
+        }
+        case '명랑 핫도그': {
+          return [1, 2, 4, 5, 6];
+        }
+        case '피자스쿨': {
+          return [0, 3, 5, 7, 9];
+        }
+        case '신라면': {
+          return [0, 1, 2, 4, 6];
+        }
 
+        default: {
+          return;
+        }
+      }
+    };
     axios
       .post('http://54.180.113.169:3000/result', {
         foodName: likeFoodValue,
         wishItemPrice: wishPriceValue,
       })
       .then(function (response) {
-        setFood1(response.data.data[foodList[0]].foodName);
-        setFood2(response.data.data[foodList[1]].foodName);
-        setFood3(response.data.data[foodList[2]].foodName);
-        setFood4(response.data.data[foodList[3]].foodName);
-        setFood5(response.data.data[foodList[4]].foodName); // 이걸로 잘 되면 foodList 에 문제가 있다는 것.
+        const resultArr = response.data.data;
+        setFood2(resultArr[foodList()[1]]);
+        setFood3(resultArr[foodList()[2]]);
+        setFood1(resultArr[foodList()[0]]);
+        setFood4(resultArr[foodList()[3]]);
+        setFood5(resultArr[foodList()[4]]); // 이걸로 잘 되면 foodList 에 문제가 있다는 것.
       })
       .catch(function (error) {
         console.log(error);
@@ -84,11 +88,6 @@ export default function Result() {
   }, [likeFoodValue, wishPriceValue]);
 
   //foodList는 매번 업데이트될 필요가 있지. 얘의 역할은 10개 중에서 5개를 뭘 뽑을지 그 번호를 저장하는 거고
-  const foodNum1 = 'n';
-  const foodNum2 = 'n';
-  const foodNum3 = 'n';
-  const foodNum4 = 'n';
-  const foodNum5 = 'n';
 
   //console.log(food1);
   //console.log(food2);
@@ -121,11 +120,11 @@ export default function Result() {
       <Container1>
         <TextWrapper>
           <Text>
-            <Bolded>나림이</Bolded>
+            <Bolded>{checkName(userNameValue, 1)}</Bolded>
             에게
           </Text>
           <Text>
-            <BoldRed>에어팟 맥스</BoldRed>
+            <BoldRed>{wishItemValue}</BoldRed>
           </Text>
           <Text>선물해주기 프로젝트</Text>
           <Text>선물 주기 생각보다 쉽다~🎁</Text>
@@ -134,7 +133,7 @@ export default function Result() {
             <BoldRed>뿌링클 200개</BoldRed>만
           </Text>
           <Text> 포기하면 돼ㅋ</Text>
-          <Text>{checkName('혜인', 0)} 향한 애정,</Text>
+          <Text>{checkName(userNameValue, 0)} 향한 애정,</Text>
           <Text>그 정도는 되잖아~❤️?</Text>
           <Blank></Blank>
         </TextWrapper>
@@ -142,19 +141,24 @@ export default function Result() {
           <p> 만약 어렵다면~</p>
           <Blank></Blank>
           <p>
-            {food1} {foodNum1}개 먹지 말든지 ㅋㅎ ~
+            {food1.foodName} {food1.foodNum}
+            {food1.unit} 먹지 말든지 ㅋㅎ ~
           </p>
           <p>
-            {food2} {foodNum2}마리 먹지 말든지 ㅋㅋ ~
+            {food2.foodName} {food2.foodNum}
+            {food2.unit}마리 먹지 말든지 ㅋㅋ ~
           </p>
           <p>
-            {food3} {foodNum3}잔 먹지 말든지 ㅎㅋ ~
+            {food3.foodName} {food3.foodNum}
+            {food3.unit}잔 먹지 말든지 ㅎㅋ ~
           </p>
           <p>
-            {food4} {foodNum4}봉지 먹지 말든지 ㅋㅋ ~
+            {food4.foodName} {food4.foodNum}
+            {food4.unit}봉지 먹지 말든지 ㅋㅋ ~
           </p>
           <p>
-            {food5} {foodNum5}개 먹지 말든지 ㅋㅋㅋ ~
+            {food5.foodName} {food5.foodNum}
+            {food5.unit}개 먹지 말든지 ㅋㅋㅋ ~
           </p>
         </DailyFoodWrapper>
         <ScrollIcon src={scrollIcon} alt='scrollIcon'></ScrollIcon>
