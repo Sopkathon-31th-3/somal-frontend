@@ -15,8 +15,16 @@ import { likeFood, wishPrice, userName, wishItem } from 'atoms/atom';
 import { useState } from 'react';
 
 export default function Result() {
+  const checkZero = (num) => {
+    if (num === 0) {
+      return 1;
+    } else {
+      return num;
+    }
+  };
+
   const inputPriceFormat = (str) => {
-    str = String(str);
+    str = String(checkZero(str));
     str.replace(/(^0+)/, '');
     const comma = (str) => {
       str = String(str);
@@ -127,7 +135,6 @@ export default function Result() {
       })
       .then(function (response) {
         const resultArr = response.data.data;
-        console.log(response.data.data);
         setFood2(resultArr[foodList()[1]]);
         setFood3(resultArr[foodList()[2]]);
         setFood1(resultArr[foodList()[0]]);
