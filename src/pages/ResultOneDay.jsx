@@ -107,7 +107,7 @@ export default function Result() {
       }
     };
     axios
-      .post('https://54.180.113.169:3000/result', {
+      .post('http://54.180.113.169:3000/result', {
         foodName: likeFoodValue,
         wishItemPrice: wishPriceValue,
       })
