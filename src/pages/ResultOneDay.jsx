@@ -151,14 +151,24 @@ export default function Result() {
     );
   }
 
+  function checkName2(name) {
+    const charCode = name.charCodeAt(name.length - 1);
+
+    const consonantCode = (charCode - 44032) % 28;
+
+    if (consonantCode === 0) {
+      //받침 없음
+      return '는';
+    }
+
+    return '은';
+  }
+
   return (
     <StyledRoot>
       <Container1>
         <TextWrapper>
-          <Text>
-            <Bolded>{checkName(userNameValue, 1)}</Bolded>
-            에게
-          </Text>
+          <Text>{checkName(userNameValue, 1)}</Text>
           <Text>
             <BoldRed>{wishItemValue}</BoldRed>
           </Text>
@@ -182,23 +192,23 @@ export default function Result() {
           <Blank></Blank>
           <p>
             {food1.foodName} {food1.foodNum}
-            {food1.unit} 먹지 말든지 ㅋㅎ ~
+            {food1.unit} 먹지 말든지..~
           </p>
           <p>
             {food2.foodName} {food2.foodNum}
-            {food2.unit}마리 먹지 말든지 ㅋㅋ ~
+            {food2.unit} 먹지 말든지..~
           </p>
           <p>
             {food3.foodName} {food3.foodNum}
-            {food3.unit}잔 먹지 말든지 ㅎㅋ ~
+            {food3.unit} 먹지 말든지..~
           </p>
           <p>
             {food4.foodName} {food4.foodNum}
-            {food4.unit}봉지 먹지 말든지 ㅋㅋ ~
+            {food4.unit} 먹지 말든지..~
           </p>
           <p>
             {food5.foodName} {food5.foodNum}
-            {food5.unit}개 먹지 말든지 ㅋㅋㅋ ~
+            {food5.unit} 먹지 말든지..~
           </p>
         </DailyFoodWrapper>
         <ScrollIcon src={scrollIcon} alt='scrollIcon'></ScrollIcon>
@@ -207,11 +217,13 @@ export default function Result() {
       <Container2>
         <SantaText>혜인아 아무래도</SantaText>
         <SantaText>힘들 것 같아 </SantaText>
-        <SantaText>‘뿌링클'은 죽어도</SantaText>
+        <SantaText>
+          ‘{likeFoodValue}'{checkName2(likeFoodValue)} 죽어도
+        </SantaText>
         <SantaText>포기 못하겠어 ㅠ</SantaText>
         <EndingBtn>
           <Link to={'/ending'}>
-            <NextText>그럼...우리가 들어줄까?</NextText>
+            <NextText>그럼... 우리가 들어줄까?</NextText>
             <EndingIcon src={endingIcon} alt='endingIcon'></EndingIcon>
           </Link>
         </EndingBtn>
