@@ -139,7 +139,7 @@ export default function Result() {
       }
     };
 
-    async function getResultData() {
+    const getResultData = () => {
       return [
         {
           id: 1,
@@ -212,15 +212,14 @@ export default function Result() {
           imageUrl: ramen,
         },
       ];
-    }
-    getResultData().then((resultArr) => {
-      setFood2(resultArr[foodList()[1]]);
-      setFood3(resultArr[foodList()[2]]);
-      setFood1(resultArr[foodList()[0]]);
-      setFood4(resultArr[foodList()[3]]);
-      setFood5(resultArr[foodList()[4]]);
-      setFoodSelectedResult(resultArr[[foodSelectedIdx()]]);
-    });
+    };
+    const resultArr = getResultData();
+    setFood2(resultArr[foodList()[1]]);
+    setFood3(resultArr[foodList()[2]]);
+    setFood1(resultArr[foodList()[0]]);
+    setFood4(resultArr[foodList()[3]]);
+    setFood5(resultArr[foodList()[4]]);
+    setFoodSelectedResult(resultArr[[foodSelectedIdx()]]);
   }, [likeFoodValue, wishPriceValue]);
 
   function checkName(name, num) {
