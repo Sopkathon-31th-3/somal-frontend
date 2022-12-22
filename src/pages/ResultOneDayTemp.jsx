@@ -1,5 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 import resultContainer1 from '../assets/image/resultContainer1.png';
 import resultContainer2Test from '../assets/image/resultContainer2_test.png';
@@ -12,17 +13,6 @@ import { Link } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { likeFood, wishPrice, userName, wishItem } from 'atoms/atom';
 import { useState } from 'react';
-
-import burger from '../assets/image/burger.png';
-import chicken from '../assets/image/chicken.png';
-import coffee from '../assets/image/coffee.png';
-import gookbap from '../assets/image/gookbap.png';
-import tteokbokki from '../assets/image/tteokbokki.png';
-import gimbap from '../assets/image/gimbap.png';
-import hotdog from '../assets/image/hotdog.png';
-import pizza from '../assets/image/pizza.png';
-import ramen from '../assets/image/ramen.png';
-import boonguhppang from '../assets/image/boonguhppang.png';
 
 export default function Result() {
   const checkZero = (num) => {
@@ -138,89 +128,23 @@ export default function Result() {
         }
       }
     };
-
-    async function getResultData() {
-      return [
-        {
-          id: 1,
-          foodName: '뿌링클',
-          foodNum: Math.floor(wishPriceValue / 18000),
-          unit: '마리',
-          imageUrl: chicken,
-        },
-        {
-          id: 2,
-          foodName: '붕어빵',
-          foodNum: Math.floor(wishPriceValue / 500),
-          unit: '마리',
-          imageUrl: boonguhppang,
-        },
-        {
-          id: 3,
-          foodName: '스벅 아아',
-          foodNum: Math.floor(wishPriceValue / 4500),
-          unit: '잔',
-          imageUrl: coffee,
-        },
-        {
-          id: 4,
-          foodName: '순대 국밥',
-          foodNum: Math.floor(wishPriceValue / 9000),
-          unit: '그릇',
-          imageUrl: gookbap,
-        },
-        {
-          id: 5,
-          foodName: '빅맥 세트',
-          foodNum: Math.floor(wishPriceValue / 7500),
-          unit: '개',
-          imageUrl: burger,
-        },
-        {
-          id: 6,
-          foodName: '엽기 떡볶이',
-          foodNum: Math.floor(wishPriceValue / 14000),
-          unit: '개',
-          imageUrl: tteokbokki,
-        },
-        {
-          id: 7,
-          foodName: '김가네 김밥',
-          foodNum: Math.floor(wishPriceValue / 3900),
-          unit: '줄',
-          imageUrl: gimbap,
-        },
-        {
-          id: 8,
-          foodName: '명랑 핫도그',
-          foodNum: Math.floor(wishPriceValue / 1800),
-          unit: '개',
-          imageUrl: hotdog,
-        },
-        {
-          id: 9,
-          foodName: '피자스쿨',
-          foodNum: Math.floor(wishPriceValue / 10900),
-          unit: '판',
-          imageUrl: pizza,
-        },
-        {
-          id: 10,
-          foodName: '신라면',
-          foodNum: Math.floor(wishPriceValue / 820),
-          unit: '봉지',
-          imageUrl: ramen,
-        },
-      ];
-    }
-    getResultData().then((resultArr) => {
-      setFood2(resultArr[foodList()[1]]);
-      setFood3(resultArr[foodList()[2]]);
-      setFood1(resultArr[foodList()[0]]);
-      setFood4(resultArr[foodList()[3]]);
-      setFood5(resultArr[foodList()[4]]);
-      setFoodSelectedResult(resultArr[[foodSelectedIdx()]]);
-    });
+    axios
+      .post('http://54.180.113.169:3000/result', {
+        foodName: likeFoodValue,
+        wishItemPrice: wishPriceValue,
+      })
+      .then(function (response) {
+        const resultArr = response.data.data;
+        setFood2(resultArr[foodList()[1]]);
+        setFood3(resultArr[foodList()[2]]);
+        setFood1(resultArr[foodList()[0]]);
+        setFood4(resultArr[foodList()[3]]);
+        setFood5(resultArr[foodList()[4]]);
+        setFoodSelectedResult(resultArr[[foodSelectedIdx()]]);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }, [likeFoodValue, wishPriceValue]);
 
   function checkName(name, num) {
@@ -279,7 +203,7 @@ export default function Result() {
           </Text>
           <Text> 포기하면 돼ㅋ</Text>
           <br />
-          <FoodPhoto src={foodSelectedResult.imageUrl} alt='선택한 음식 사진'></FoodPhoto>
+          <FoodPhoto src={foodSelectedResult.imageURL} alt='선택한 음식 사진'></FoodPhoto>
           <br />
           <br />
           <Text>{checkName(userNameValue, 0)} 향한 애정,</Text>
