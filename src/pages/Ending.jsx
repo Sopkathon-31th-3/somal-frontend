@@ -12,6 +12,11 @@ function Ending() {
   const setWishPrice = useSetRecoilState(wishPrice);
   const setLikeFood = useSetRecoilState(likeFood);
 
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+
   function ResetRecoil() {
     setUserName('');
     setWishItem('');
