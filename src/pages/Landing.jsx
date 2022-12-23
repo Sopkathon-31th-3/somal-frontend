@@ -4,8 +4,22 @@ import styled from 'styled-components';
 import ballon from '../assets/image/ballon.svg';
 import santa from '../assets/image/santa.png';
 import present from '../assets/image/present.png';
+import { wishPrice, wishItem, likeFood, userName } from 'atoms/atom';
+import { useSetRecoilState } from 'recoil';
 
 function Landing() {
+  const setUserName = useSetRecoilState(userName);
+  const setWishItem = useSetRecoilState(wishItem);
+  const setWishPrice = useSetRecoilState(wishPrice);
+  const setLikeFood = useSetRecoilState(likeFood);
+
+  function resetRecoil() {
+    setUserName('');
+    setWishItem('');
+    setWishPrice('');
+    setLikeFood('');
+  }
+
   return (
     <Stcontainer>
       <StWrapper>
@@ -14,7 +28,9 @@ function Landing() {
           <Santa src={santa} alt='santa' />
 
           <Link to={'/step1'}>
-            <button type='button'>시작하기</button>
+            <button type='button' onClick={resetRecoil}>
+              시작하기
+            </button>
           </Link>
         </StStart>
       </StWrapper>
