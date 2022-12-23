@@ -39,7 +39,7 @@ function Ending() {
           <button onClick={ResetRecoil}>처음으로</button>
         </Link>
         <CopyToClipboard
-          text={`https://makeawish.vercel.app/`}
+          text={`https://makeawish.vercel.app?ref=makeawish_web&utm_campaign=makeawish_web&utm_source=share&utm_medium=referral`}
           onCopy={() => alert('링크가 클립보드에 복사되었어요!')}
         >
           <button>공유하기</button>
