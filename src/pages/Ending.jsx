@@ -69,6 +69,8 @@ const StEndingcontainer = styled.div`
 
 const StShare = styled.div`
   & > button {
+    width: 50%;
+    text-align: right;
     font-family: Galmuri11, sans-serif;
     font-size: 1.8rem;
     background-color: #ee5959;
@@ -76,6 +78,8 @@ const StShare = styled.div`
     margin-right: 4.1rem;
   }
   & > a > button {
+    width: 50%;
+    text-align: left;
     font-family: Galmuri11, sans-serif;
     font-size: 1.8rem;
     background-color: #ee5959;

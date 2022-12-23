@@ -258,6 +258,19 @@ export default function Result() {
     return '은';
   }
 
+  function checkName3(name) {
+    const charCode = name.charCodeAt(name.length - 1);
+
+    const consonantCode = (charCode - 44032) % 28;
+
+    if (consonantCode === 0) {
+      //받침 없음
+      return '야';
+    }
+
+    return '아';
+  }
+
   return (
     <StyledRoot>
       <Container1>
@@ -314,7 +327,10 @@ export default function Result() {
       </Container1>
       <DescText>화면을 캡쳐해서 네 산타에게 보내봐!</DescText>
       <Container2>
-        <SantaText>혜인아 아무래도</SantaText>
+        <SantaText>
+          {userNameValue}
+          {checkName3(userNameValue)} 아무래도
+        </SantaText>
         <SantaText>힘들 것 같아 </SantaText>
         <SantaText>
           ‘{likeFoodValue}'{checkName2(likeFoodValue)} 죽어도

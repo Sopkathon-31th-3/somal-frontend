@@ -26,7 +26,7 @@ function Step4() {
   const navigate = useNavigate();
 
   const onClickNext = () => {
-    if (_likeFood == '' || _likeFood == undefined) {
+    if (_likeFood === '' || _likeFood === undefined) {
       alert('음식을 선택해주세요!');
     } else {
       navigate(`/loading`);
@@ -41,7 +41,7 @@ function Step4() {
     { src: burger, name: '빅맥세트', price: '7,500' },
     { src: ttheokbokki, name: '엽기 떡볶이', price: '14,000' },
     { src: gimbap, name: '김가네 김밥', price: '3,900' },
-    { src: hotdog, name: '핫도그', price: '1,800' },
+    { src: hotdog, name: '명랑 핫도그', price: '1,800' },
     { src: pizza, name: '피자스쿨', price: '10,900' },
     { src: ramen, name: '신라면', price: '820' },
   ];
