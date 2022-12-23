@@ -13,7 +13,7 @@ function Loading() {
     setTimeout(() => {
       navigate('/resultoneday');
     }, 3000);
-  }, []);
+  }, [navigate]);
 
   useEffect(() => {
     const typingInterval = setInterval(() => {
@@ -51,8 +51,9 @@ const StLoadingContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  height: 100vh;
+  position: absolute;
+  top: 21.8rem;
+  left: 10.9rem;
 `;
 
 const Santa = styled.img`

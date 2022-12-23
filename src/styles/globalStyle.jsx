@@ -8,7 +8,6 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     flex-direction: column;
     max-width: 39rem;
-    min-height: 100vh;
     margin: 0 auto;
     position: relative;
   }
