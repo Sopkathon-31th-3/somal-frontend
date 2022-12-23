@@ -5,6 +5,7 @@ import sowonSanta from '../assets/image/sowonSanta.png';
 import { Link } from 'react-router-dom';
 import { wishPrice, wishItem, likeFood, userName } from 'atoms/atom';
 import { useSetRecoilState } from 'recoil';
+import { useEffect } from 'react';
 
 function Ending() {
   const setUserName = useSetRecoilState(userName);
@@ -12,10 +13,12 @@ function Ending() {
   const setWishPrice = useSetRecoilState(wishPrice);
   const setLikeFood = useSetRecoilState(likeFood);
 
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth',
-  });
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, []);
 
   function ResetRecoil() {
     setUserName('');
